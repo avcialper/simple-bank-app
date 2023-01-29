@@ -32,7 +32,7 @@ public class bankWindow extends javax.swing.JFrame {
     public bankWindow() {
         initComponents();
         cardLayout = (CardLayout)(cards.getLayout());
-        if(DatabaseOperation.loginCheck){
+        if(!DatabaseOperation.loginCheck){
             showMessage("VERİTABANI İLE BAĞLANTI SAĞLANAMADI");
             System.exit(0);
         }
@@ -60,7 +60,6 @@ public class bankWindow extends javax.swing.JFrame {
         timer.setRepeats(false);
         timer.start();
         cardLayout.show(cards, "windowCard");
-        
         if(timerB)
             timer.stop();
     }

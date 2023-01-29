@@ -23,7 +23,7 @@ public class DatabaseOperation {
     private static PreparedStatement preparedStatment = null;
     
     
-    public static boolean loginCheck = true;
+    public static boolean loginCheck;
     
     public DatabaseOperation(){
         // Veritabanı ile bağlantı kurma
@@ -39,6 +39,7 @@ public class DatabaseOperation {
             loginCheck = true;
         } catch (SQLException ex) {
             System.out.println("Connection Failed");
+            loginCheck = false;
         }
     }
     
