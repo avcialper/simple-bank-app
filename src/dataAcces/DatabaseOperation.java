@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseOperation {
-    
+    // Creating the elements to use.
     private static String userName = "root";
     private static String userPassword = "";
     private static String host = "localhost";
@@ -25,8 +25,8 @@ public class DatabaseOperation {
     
     public static boolean loginCheck;
     
+    // Connecting to the database.
     public DatabaseOperation(){
-        // Veritabanı ile bağlantı kurma
         String url = "jdbc:mysql://" + host + ":" + port + "/" + databaseName + "?useUnicode=ture&chacaterEncoding=utf8";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -43,91 +43,92 @@ public class DatabaseOperation {
         }
     }
     
+    // Check if the generated iban number is included in the database.
     public boolean registeredIbanNumberControl(int ibanNumber) {
-        // Yeni oluşturulan ibanın önceden var olup olmadığının kontrolü
         String query = "Select * From users Where ibanNumber = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
             preparedStatment.setInt(1, ibanNumber);
             ResultSet resultSet = preparedStatment.executeQuery();
-            return resultSet.next();    // İban sistemde kayıtlı ise geriye true değeri döndürür
+            return resultSet.next();    // Returns true if the generated iban number is included in the database.
         } catch (SQLException ex) {
         }
         return true;
     }
     
+    // Check if the generated account number is included in the database.
     public boolean registeredAccountNumberControl(int accountNumber){
-        // Yeni oluşturulan hesap numarasının önceden  var olup olmadığının kontrolü
         String query = "Select * From users Where accountNumber = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
             preparedStatment.setInt(1, accountNumber);
             ResultSet resultSet = preparedStatment.executeQuery();
-            return resultSet.next();    // Hesap numarası sistemde kayıtlı ise geriye true değeri döndürür
+            return resultSet.next();    // Returns true if the generated account number is included in the database.
         } catch (SQLException ex) {
         }
         return true;
     }
     
+    // Check if the id number is included in the database.
     public boolean registeredIdNumberCheck(int idNumber){
-        // Aynı kimlik numarasının daha önce kayıtlı olup olmadığının kontrolü
         String query = "Select * From users Where idNumber = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
             preparedStatment.setInt(1, idNumber);
             ResultSet resultSet = preparedStatment.executeQuery();
-            return resultSet.next(); // kimlik numarası önceden sisteme kaydedilmiş ise true değer döndürür
+            return resultSet.next();    // Returns true if the id number is included in the database.
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseOperation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
     
+    // Check if the e-mail is included in the database.
     public boolean registeredEmailCheck(String email){
         String query = "Select * From users Where email = ?";
         try {
             preparedStatment= connection.prepareStatement(query);
             preparedStatment.setString(1, email);
             ResultSet resultSet = preparedStatment.executeQuery();
-            return resultSet.next();
+            return resultSet.next();    // Returns true if the e-mail is included in the database.
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseOperation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
     
+    // Checking login informatin.
     public boolean idNumberAndPasswordCheck(int idNumber, int password){
-        // Giriş için girilen kimlik numarası var mı varsa şifre ile uyuşuyor mu kontrolü
         String query = "Select * From users Where idNumber = ? and password = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
             preparedStatment.setInt(1, idNumber);
             preparedStatment.setInt(2, password);
             ResultSet resultSet = preparedStatment.executeQuery();
-            return resultSet.next(); // kimlik numarası ve şifre varsa geriye ture değer döndürür
+            return resultSet.next();    // Returns true if the information included in the database.
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseOperation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
     
+    // Checking login informatin.
     public boolean accountNumberAndPasswordCheck(int accountNumber, int password){
-        // Giriş için girilen hesap numarası var mı varsa şifre ile uyuşuyor mu kontrolü
         String query = "Select * From users Where accountNumber = ?  and password = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
             preparedStatment.setInt(1, accountNumber);
             preparedStatment.setInt(2, password);
             ResultSet resultSet = preparedStatment.executeQuery();
-            return resultSet.next(); // Hesap numarası ve şifre varsa geriye true değer döndürür
+            return resultSet.next();    // Returns true if the information included in the database.
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseOperation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
     
+    // Creating a new account.
     public void creatNewAccount(UserInfo memberInfo) {
-        // Veritabanına yeni kullanıcı kaydı yapma
         String newAccount = "Insert Into users(ibanNumber, accountNumber, idNumber, password, name, surname, tlBalance,"
                 + "dolarBalance, euroBalance, email) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
@@ -148,8 +149,8 @@ public class DatabaseOperation {
         }
     }
     
+    // Get user information from database using account number.
     public UserInfo getUserInfoFromDatabaseWithAccountNumber(int getAccountNumber) {
-        // Hesap numarası ile veritabanından kullanıcı bilgileri çekme
         String query = "Select * From users Where accountNumber = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
@@ -175,8 +176,8 @@ public class DatabaseOperation {
         return null;
     }
     
+    // Get user information from database using id number.
     public UserInfo getUserInfoFromDatabaseWithIdNumber(int getIdNumber) {
-        // kimlik numarası ile veritabanından kullanıcı bilgileri çekme
         String query = "Select * From users Where idNumber = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
@@ -202,8 +203,8 @@ public class DatabaseOperation {
         return null;
     }
     
+    // Get user information from database using iban number.
     public UserInfo getUserInfoFromDatabaseWithIbanNumber(int getIbanNumber){
-        // İban ile veritabanından kullanıcı bilgileri çekme
         String query = "Select * From users Where ibanNumber = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
@@ -229,8 +230,8 @@ public class DatabaseOperation {
         return null;
     }
     
+    // Update user information.
     public boolean updateUserInfo(UserInfo userInfo){
-        // Kullanıcı bilgilerini güncelleme
         String query = "Update users set name = ?, surname = ?, email = ?, password = ? where idNumber = ?";
         try {
             preparedStatment = connection.prepareStatement(query);
@@ -247,8 +248,8 @@ public class DatabaseOperation {
         return false;
     }
     
+    // Update money information.
     public boolean updateMoneyBalance(UserInfo memberInfo){
-        // Para değerlerini güncelleme
         String query = "Update users set tlBalance = ?, dolarBalance = ?, euroBalance = ? where idNumber = ?";
         try {
             preparedStatment =  connection.prepareStatement(query);

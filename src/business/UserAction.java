@@ -9,8 +9,8 @@ public class UserAction {
     
     DatabaseOperation databaseOperation = new DatabaseOperation();
     
-    public int creatIbanNumber(){
-        // Yeni iban numarası oluşturma
+    // Generate new iban number.
+    public int generateIbanNumber(){
         Random random = new Random();
         boolean booleanIban = true;
         String ibanConcat = "";
@@ -24,8 +24,8 @@ public class UserAction {
         return randomIban;
     }
     
-    public int creatAccountNumber(){
-        // Hesap numarası oluşturma
+    // Generate new account number.
+    public int generateAccountNumber(){
         Random random = new Random();
         boolean booleanAccountNumber = true;
         String accountConcat = "";
@@ -39,8 +39,8 @@ public class UserAction {
         return randomAccountNumber;
     }
     
+    // Login with id number.
     public boolean userLoginWithIdNumber(int idNumber, int password){
-        // TC numarası ile giriş yapma
         boolean query = databaseOperation.idNumberAndPasswordCheck(idNumber, password);
         if(query)
             return true;
@@ -48,8 +48,8 @@ public class UserAction {
             return false;
     }
     
+    // Login with account number.
     public boolean userLoginWithAccountNumber(int accountNumber, int password){
-        // Hesap no ile giriş yapma
         boolean query = databaseOperation.accountNumberAndPasswordCheck(accountNumber, password);
         if(query)
             return true;
@@ -57,20 +57,20 @@ public class UserAction {
             return false;
     }
     
+    // Get user information from database using account number.
     public UserInfo getUserInfoWithAccountNumber(int accountNumber){
-        // Hesap numarası ile kullanıcı bilgilerini veritabanından çekme
         UserInfo memberInfo = databaseOperation.getUserInfoFromDatabaseWithAccountNumber(accountNumber);
         return memberInfo;
     }
     
+    // Get user information from database using id number.
     public UserInfo getUserInfoWithIdNumber(int idNumber){
-        // TC ile kullanıcı bilgilerini veritabanından çekme
         UserInfo memberInfo = databaseOperation.getUserInfoFromDatabaseWithIdNumber(idNumber);
         return memberInfo;
     }
     
+    // Get user information from database using iban number.
     public UserInfo getUserInfoWithIban(int ibanNumber){
-        // İban ile kullanıcı bilgilerini veritabanından çekme
         UserInfo memberInfo = databaseOperation.getUserInfoFromDatabaseWithIbanNumber(ibanNumber);
         return memberInfo;
     }

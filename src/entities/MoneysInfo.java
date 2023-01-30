@@ -3,7 +3,7 @@ package entities;
 
 public class MoneysInfo {
     private double buyDolar;
-    private double sellDolar;   // kullanıcı satış fiyatı
+    private double sellDolar;
     private double buyEuro;
     private double sellEuro;
     

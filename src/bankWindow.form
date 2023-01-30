@@ -49,7 +49,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="cards" alignment="0" pref="315" max="32767" attributes="0"/>
+          <Component id="cards" alignment="0" pref="360" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -69,7 +69,7 @@
         <Container class="javax.swing.JPanel" name="loginPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[675, 316]"/>
@@ -140,7 +140,7 @@
                               <Component id="newRegisterButton" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -149,7 +149,7 @@
             <Component class="javax.swing.JRadioButton" name="idNumberRadioButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="loginPageButtonGroup"/>
@@ -172,7 +172,7 @@
             <Component class="javax.swing.JRadioButton" name="accountNumberRadioButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="loginPageButtonGroup"/>
@@ -224,7 +224,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="33" green="33" red="0" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -242,7 +242,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="33" green="33" red="0" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -254,7 +254,7 @@
             <Component class="javax.swing.JCheckBox" name="loginPasswordVisible">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="99" type="rgb"/>
@@ -280,7 +280,7 @@
         <Container class="javax.swing.JPanel" name="registerPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -417,7 +417,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                       <Component id="registerButton" min="-2" pref="41" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
@@ -434,7 +434,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -592,7 +592,7 @@
             <Component class="javax.swing.JCheckBox" name="registerPasswordVisible">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
@@ -607,8 +607,8 @@
                 <Property name="text" type="java.lang.String" value="HESAP OLU&#x15e;TUR"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder thickness="4">
-                      <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                    <LineBorder roundedCorners="true" thickness="4">
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -647,7 +647,7 @@
         <Container class="javax.swing.JPanel" name="menuPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -701,7 +701,7 @@
                           <Component id="userOperationButton" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
                           <Component id="logoutButton" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="72" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -860,20 +860,14 @@
             </Container>
             <Component class="javax.swing.JButton" name="withdrawButton">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="0" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="PARA &#xc7;EKME"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder>
-                      <Color PropertyName="highlight" blue="66" green="66" red="0" type="rgb"/>
+                      <Color PropertyName="highlight" blue="8" green="8" red="97" type="rgb"/>
                       <Color PropertyName="shadow" blue="0" green="0" red="0" type="rgb"/>
                     </EtchetBorder>
                   </Border>
@@ -885,20 +879,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="currencyTransactionsButton">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="0" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="D&#xd6;V&#x130;Z &#x130;&#x15e;LEMLER&#x130;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder>
-                      <Color PropertyName="highlight" blue="66" green="66" red="0" type="rgb"/>
+                      <Color PropertyName="highlight" blue="8" green="8" red="97" type="rgb"/>
                       <Color PropertyName="shadow" blue="0" green="0" red="0" type="rgb"/>
                     </EtchetBorder>
                   </Border>
@@ -910,20 +898,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="userOperationButton">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="0" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="KULLANICI &#x130;&#x15e;LEMLER&#x130;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder>
-                      <Color PropertyName="highlight" blue="66" green="66" red="0" type="rgb"/>
+                      <Color PropertyName="highlight" blue="8" green="8" red="97" type="rgb"/>
                       <Color PropertyName="shadow" blue="0" green="0" red="0" type="rgb"/>
                     </EtchetBorder>
                   </Border>
@@ -935,20 +917,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="depositeButton">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="0" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="PARA YATIRMA/G&#xd6;NDERME"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder>
-                      <Color PropertyName="highlight" blue="66" green="66" red="0" type="rgb"/>
+                      <Color PropertyName="highlight" blue="8" green="8" red="97" type="rgb"/>
                       <Color PropertyName="shadow" blue="0" green="0" red="0" type="rgb"/>
                     </EtchetBorder>
                   </Border>
@@ -960,20 +936,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="logoutButton">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="0" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#xc7;IKI&#x15e;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder>
-                      <Color PropertyName="highlight" blue="66" green="66" red="0" type="rgb"/>
+                      <Color PropertyName="highlight" blue="8" green="8" red="97" type="rgb"/>
                       <Color PropertyName="shadow" blue="0" green="0" red="0" type="rgb"/>
                     </EtchetBorder>
                   </Border>
@@ -988,7 +958,7 @@
         <Container class="javax.swing.JPanel" name="depositePanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1034,7 +1004,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="depOpPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="74" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1049,7 +1019,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -1061,7 +1031,7 @@
             <Component class="javax.swing.JRadioButton" name="myAccount">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="depButtonGroup1"/>
@@ -1081,7 +1051,7 @@
             <Component class="javax.swing.JRadioButton" name="anotherAccount">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="depButtonGroup1"/>
@@ -1290,7 +1260,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder thickness="5">
-                          <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                          <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -1306,7 +1276,7 @@
         <Container class="javax.swing.JPanel" name="withdrawPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1355,7 +1325,7 @@
                           </Group>
                           <Component id="wtOPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="103" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1370,7 +1340,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -1382,7 +1352,7 @@
             <Component class="javax.swing.JRadioButton" name="wtTlRadioButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="withdrawButonGroup"/>
@@ -1402,7 +1372,7 @@
             <Component class="javax.swing.JRadioButton" name="wtDolarRadioButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="withdrawButonGroup"/>
@@ -1422,7 +1392,7 @@
             <Component class="javax.swing.JRadioButton" name="wtEuroRadioButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="withdrawButonGroup"/>
@@ -1531,7 +1501,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder thickness="5">
-                          <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                          <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -1547,7 +1517,7 @@
         <Container class="javax.swing.JPanel" name="updatePanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1665,7 +1635,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace pref="89" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1680,7 +1650,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -1783,7 +1753,7 @@
             <Component class="javax.swing.JCheckBox" name="updatePasswordVisibleBox">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
@@ -1799,7 +1769,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -1855,7 +1825,7 @@
         <Container class="javax.swing.JPanel" name="currencyPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1904,7 +1874,7 @@
                               <Component id="currencyOp" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1919,7 +1889,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder thickness="5">
-                      <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                      <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -1931,7 +1901,7 @@
             <Component class="javax.swing.JRadioButton" name="currencyDolarRadioButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="currencyButtonGroup1"/>
@@ -1951,7 +1921,7 @@
             <Component class="javax.swing.JRadioButton" name="currencyEuroRadioButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1a" green="8" red="29" type="rgb"/>
+                  <Color blue="1a" green="6" red="9" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="currencyButtonGroup1"/>
@@ -2160,7 +2130,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder thickness="5">
-                          <Color PropertyName="color" blue="1a" green="8e" red="83" type="rgb"/>
+                          <Color PropertyName="color" blue="8" green="8" red="97" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -2176,7 +2146,7 @@
         <Container class="javax.swing.JPanel" name="windowPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1a" green="8" red="29" type="rgb"/>
+              <Color blue="1a" green="6" red="9" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -2202,7 +2172,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <EmptySpace pref="130" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel12" max="32767" attributes="0"/>
                           <Component id="jLabel11" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>

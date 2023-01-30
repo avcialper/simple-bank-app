@@ -4,7 +4,6 @@ import dataAcces.DatabaseOperation;
 import entities.MoneysInfo;
 import entities.UserInfo;
 import java.awt.CardLayout;
-import java.awt.Event;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -12,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -21,6 +18,7 @@ import javax.swing.Timer;
 
 public class bankWindow extends javax.swing.JFrame {
     
+    // Creating the items to use.
     UserAction userAction = new UserAction();
     DatabaseOperation databaseOperation = new DatabaseOperation();
     UserInfo userInfo = null;
@@ -33,24 +31,26 @@ public class bankWindow extends javax.swing.JFrame {
         initComponents();
         cardLayout = (CardLayout)(cards.getLayout());
         if(!DatabaseOperation.loginCheck){
-            showMessage("VERİTABANI İLE BAĞLANTI SAĞLANAMADI");
+            showMessage("DATABASE CONNECTION FAILED");
             System.exit(0);
         }
     }
     
-    
+    // Go to previous page.
     public void allExitButton(){
         timerB = false;
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(myCard.equals("registerCard") || myCard.equals("menuCard")){
+                    myCard = "loginCard";
                     cardLayout.show(cards, "loginCard");
                     timerB = true;
                 }
                 else if(myCard.equals("loginCard"))
                     timerB = true;
                 else{
+                    myCard = "menuCard";
                     cardLayout.show(cards, "menuCard");
                     timerB = true;
                 }
@@ -64,6 +64,7 @@ public class bankWindow extends javax.swing.JFrame {
             timer.stop();
     }
     
+    // Check for spaces.
     public boolean registerInfoIsEmpty(){
         String informations[] = {
             registerNameText.getText(),
@@ -80,10 +81,12 @@ public class bankWindow extends javax.swing.JFrame {
         return false;
     }
     
+    // Shows message.
     void showMessage(String message){
         JOptionPane.showMessageDialog(this, message);
     }
     
+    // Check e-mail availability.
     public boolean eMailRegex(String eMail) {
         String eMailRegex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(eMailRegex);
@@ -94,6 +97,7 @@ public class bankWindow extends javax.swing.JFrame {
         }
     }
     
+    // Set dollar price.
     public double[] dolarPrice() {
         Random random = new Random();
         double sellDolar = 0;
@@ -108,6 +112,7 @@ public class bankWindow extends javax.swing.JFrame {
         }
     }
     
+    // Set euro price.
     public double[] euroPrice() {
         Random random = new Random();
         double sellEuro = 0;
@@ -122,10 +127,12 @@ public class bankWindow extends javax.swing.JFrame {
         }
     }
     
+    // Change decimal format.
     public String changeDecimalFormat(double money) {
         return new DecimalFormat("##.##").format(money);
     }
     
+    // Convert all money to TL.
     public double calculateMoney(){
         return userInfo.getTlBalance() + userInfo.getDolarBalance() * moneysInfo.getSellDolar()
                     + userInfo.getEuroBalance() * moneysInfo.getSellEuro();
@@ -253,10 +260,10 @@ public class bankWindow extends javax.swing.JFrame {
         cards.setPreferredSize(new java.awt.Dimension(550, 348));
         cards.setLayout(new java.awt.CardLayout());
 
-        loginPanel.setBackground(new java.awt.Color(41, 8, 26));
+        loginPanel.setBackground(new java.awt.Color(9, 6, 26));
         loginPanel.setMaximumSize(new java.awt.Dimension(675, 316));
 
-        idNumberRadioButton.setBackground(new java.awt.Color(41, 8, 26));
+        idNumberRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         loginPageButtonGroup.add(idNumberRadioButton);
         idNumberRadioButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         idNumberRadioButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,7 +275,7 @@ public class bankWindow extends javax.swing.JFrame {
             }
         });
 
-        accountNumberRadioButton.setBackground(new java.awt.Color(41, 8, 26));
+        accountNumberRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         loginPageButtonGroup.add(accountNumberRadioButton);
         accountNumberRadioButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         accountNumberRadioButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -303,7 +310,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         loginButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         loginButton.setText("GİRİŞ YAP");
-        loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51), 5));
+        loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -312,14 +319,14 @@ public class bankWindow extends javax.swing.JFrame {
 
         newRegisterButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         newRegisterButton.setText("KAYIT OL");
-        newRegisterButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51), 5));
+        newRegisterButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         newRegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newRegisterButtonActionPerformed(evt);
             }
         });
 
-        loginPasswordVisible.setBackground(new java.awt.Color(41, 8, 26));
+        loginPasswordVisible.setBackground(new java.awt.Color(9, 6, 26));
         loginPasswordVisible.setForeground(new java.awt.Color(153, 0, 0));
         loginPasswordVisible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -383,11 +390,11 @@ public class bankWindow extends javax.swing.JFrame {
 
         cards.add(loginPanel, "loginCard");
 
-        registerPanel.setBackground(new java.awt.Color(41, 8, 26));
+        registerPanel.setBackground(new java.awt.Color(9, 6, 26));
 
         registerExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerExitButton.setText("GERİ");
-        registerExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        registerExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         registerExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerExitButtonActionPerformed(evt);
@@ -444,7 +451,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         registerAgainPasswordText.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
-        registerPasswordVisible.setBackground(new java.awt.Color(41, 8, 26));
+        registerPasswordVisible.setBackground(new java.awt.Color(9, 6, 26));
         registerPasswordVisible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerPasswordVisibleActionPerformed(evt);
@@ -453,7 +460,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         registerButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerButton.setText("HESAP OLUŞTUR");
-        registerButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 4));
+        registerButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(151, 8, 8), 4, true));
         registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -575,7 +582,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         cards.add(registerPanel, "registerCard");
 
-        menuPanel.setBackground(new java.awt.Color(41, 8, 26));
+        menuPanel.setBackground(new java.awt.Color(9, 6, 26));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 5));
@@ -656,55 +663,45 @@ public class bankWindow extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        withdrawButton.setBackground(new java.awt.Color(0, 51, 51));
         withdrawButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        withdrawButton.setForeground(new java.awt.Color(255, 255, 255));
         withdrawButton.setText("PARA ÇEKME");
-        withdrawButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 102, 102), new java.awt.Color(0, 0, 0)));
+        withdrawButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
         withdrawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 withdrawButtonActionPerformed(evt);
             }
         });
 
-        currencyTransactionsButton.setBackground(new java.awt.Color(0, 51, 51));
         currencyTransactionsButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        currencyTransactionsButton.setForeground(new java.awt.Color(255, 255, 255));
         currencyTransactionsButton.setText("DÖVİZ İŞLEMLERİ");
-        currencyTransactionsButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 102, 102), new java.awt.Color(0, 0, 0)));
+        currencyTransactionsButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
         currencyTransactionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyTransactionsButtonActionPerformed(evt);
             }
         });
 
-        userOperationButton.setBackground(new java.awt.Color(0, 51, 51));
         userOperationButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        userOperationButton.setForeground(new java.awt.Color(255, 255, 255));
         userOperationButton.setText("KULLANICI İŞLEMLERİ");
-        userOperationButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 102, 102), new java.awt.Color(0, 0, 0)));
+        userOperationButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
         userOperationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userOperationButtonActionPerformed(evt);
             }
         });
 
-        depositeButton.setBackground(new java.awt.Color(0, 51, 51));
         depositeButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        depositeButton.setForeground(new java.awt.Color(255, 255, 255));
         depositeButton.setText("PARA YATIRMA/GÖNDERME");
-        depositeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 102, 102), new java.awt.Color(0, 0, 0)));
+        depositeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
         depositeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositeButtonActionPerformed(evt);
             }
         });
 
-        logoutButton.setBackground(new java.awt.Color(0, 51, 51));
         logoutButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("ÇIKIŞ");
-        logoutButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 102, 102), new java.awt.Color(0, 0, 0)));
+        logoutButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutButtonActionPerformed(evt);
@@ -753,18 +750,18 @@ public class bankWindow extends javax.swing.JFrame {
 
         cards.add(menuPanel, "menuCard");
 
-        depositePanel.setBackground(new java.awt.Color(41, 8, 26));
+        depositePanel.setBackground(new java.awt.Color(9, 6, 26));
 
         depositeExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         depositeExitButton.setText("GERİ");
-        depositeExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        depositeExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         depositeExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositeExitButtonActionPerformed(evt);
             }
         });
 
-        myAccount.setBackground(new java.awt.Color(41, 8, 26));
+        myAccount.setBackground(new java.awt.Color(9, 6, 26));
         depButtonGroup1.add(myAccount);
         myAccount.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         myAccount.setForeground(new java.awt.Color(255, 255, 255));
@@ -775,7 +772,7 @@ public class bankWindow extends javax.swing.JFrame {
             }
         });
 
-        anotherAccount.setBackground(new java.awt.Color(41, 8, 26));
+        anotherAccount.setBackground(new java.awt.Color(9, 6, 26));
         depButtonGroup1.add(anotherAccount);
         anotherAccount.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         anotherAccount.setForeground(new java.awt.Color(255, 255, 255));
@@ -840,7 +837,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         depApproveButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         depApproveButton.setText("ONAYLA");
-        depApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        depApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         depApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depApproveButtonActionPerformed(evt);
@@ -932,18 +929,18 @@ public class bankWindow extends javax.swing.JFrame {
 
         cards.add(depositePanel, "depositeCard");
 
-        withdrawPanel.setBackground(new java.awt.Color(41, 8, 26));
+        withdrawPanel.setBackground(new java.awt.Color(9, 6, 26));
 
         withdrawExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         withdrawExitButton.setText("GERİ");
-        withdrawExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        withdrawExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         withdrawExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 withdrawExitButtonActionPerformed(evt);
             }
         });
 
-        wtTlRadioButton.setBackground(new java.awt.Color(41, 8, 26));
+        wtTlRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         withdrawButonGroup.add(wtTlRadioButton);
         wtTlRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtTlRadioButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -954,7 +951,7 @@ public class bankWindow extends javax.swing.JFrame {
             }
         });
 
-        wtDolarRadioButton.setBackground(new java.awt.Color(41, 8, 26));
+        wtDolarRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         withdrawButonGroup.add(wtDolarRadioButton);
         wtDolarRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtDolarRadioButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -965,7 +962,7 @@ public class bankWindow extends javax.swing.JFrame {
             }
         });
 
-        wtEuroRadioButton.setBackground(new java.awt.Color(41, 8, 26));
+        wtEuroRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         withdrawButonGroup.add(wtEuroRadioButton);
         wtEuroRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtEuroRadioButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -991,7 +988,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         wtApproveButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtApproveButton.setText("ONAYLA");
-        wtApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        wtApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         wtApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wtApproveButtonActionPerformed(evt);
@@ -1069,11 +1066,11 @@ public class bankWindow extends javax.swing.JFrame {
 
         cards.add(withdrawPanel, "withdrawCard");
 
-        updatePanel.setBackground(new java.awt.Color(41, 8, 26));
+        updatePanel.setBackground(new java.awt.Color(9, 6, 26));
 
         updateExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         updateExitButton.setText("GERİ");
-        updateExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        updateExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         updateExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateExitButtonActionPerformed(evt);
@@ -1111,7 +1108,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         updateEmailText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
-        updatePasswordVisibleBox.setBackground(new java.awt.Color(41, 8, 26));
+        updatePasswordVisibleBox.setBackground(new java.awt.Color(9, 6, 26));
         updatePasswordVisibleBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatePasswordVisibleBoxActionPerformed(evt);
@@ -1120,7 +1117,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         updateExitButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         updateExitButton1.setText("KAYDET");
-        updateExitButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        updateExitButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         updateExitButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateExitButton1ActionPerformed(evt);
@@ -1228,18 +1225,18 @@ public class bankWindow extends javax.swing.JFrame {
 
         cards.add(updatePanel, "updateCard");
 
-        currencyPanel.setBackground(new java.awt.Color(41, 8, 26));
+        currencyPanel.setBackground(new java.awt.Color(9, 6, 26));
 
         currencyExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         currencyExitButton.setText("GERİ");
-        currencyExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        currencyExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         currencyExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyExitButtonActionPerformed(evt);
             }
         });
 
-        currencyDolarRadioButton.setBackground(new java.awt.Color(41, 8, 26));
+        currencyDolarRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         currencyButtonGroup1.add(currencyDolarRadioButton);
         currencyDolarRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         currencyDolarRadioButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -1250,7 +1247,7 @@ public class bankWindow extends javax.swing.JFrame {
             }
         });
 
-        currencyEuroRadioButton.setBackground(new java.awt.Color(41, 8, 26));
+        currencyEuroRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         currencyButtonGroup1.add(currencyEuroRadioButton);
         currencyEuroRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         currencyEuroRadioButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -1300,7 +1297,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         currencyApproveButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         currencyApproveButton.setText("ONAYLA");
-        currencyApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(131, 142, 26), 5));
+        currencyApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
         currencyApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyApproveButtonActionPerformed(evt);
@@ -1396,7 +1393,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         cards.add(currencyPanel, "currencyCard");
 
-        windowPanel.setBackground(new java.awt.Color(41, 8, 26));
+        windowPanel.setBackground(new java.awt.Color(9, 6, 26));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 70)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -1559,8 +1556,8 @@ public class bankWindow extends javax.swing.JFrame {
             else if(databaseOperation.registeredEmailCheck(registerEmailText.getText()))
                 showMessage("SİSTEME KAYITLI E-MAİL");
             else {
-                registerIbanNumberText.setText(String.valueOf(userAction.creatIbanNumber()));
-                registerAccountNumberText.setText(String.valueOf(userAction.creatAccountNumber()));
+                registerIbanNumberText.setText(String.valueOf(userAction.generateIbanNumber()));
+                registerAccountNumberText.setText(String.valueOf(userAction.generateAccountNumber()));
                 registerAccountNumberLabel.setVisible(true);
                 registerAccountNumberText.setVisible(true);
                 registerIbanNumberLabel.setVisible(true);
@@ -1677,7 +1674,6 @@ public class bankWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void depositeExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositeExitButtonActionPerformed
-        myCard = "menuCard";
         allExitButton();
     }//GEN-LAST:event_depositeExitButtonActionPerformed
 
@@ -1812,7 +1808,7 @@ public class bankWindow extends javax.swing.JFrame {
                 if(databaseOperation.updateMoneyBalance(userInfo) && databaseOperation.updateMoneyBalance(recipient)){
                     moneyType = "";
                     myCard = "menuCard";
-                    balanceLabel.setText(changeDecimalFormat(calculateMoney()));
+                    balanceLabel.setText("Bakiye : " + changeDecimalFormat(calculateMoney()) + "₺");
                     showMessage("İŞLEM ONAYLANDI");
                     cardLayout.show(cards, myCard);
                 } else 
@@ -1873,7 +1869,7 @@ public class bankWindow extends javax.swing.JFrame {
             moneyType = "";
             myCard = "menuCard";
             showMessage("İŞLEM ONAYLANDI");
-            balanceLabel.setText(changeDecimalFormat(calculateMoney()));
+            balanceLabel.setText("Bakiye : " + changeDecimalFormat(calculateMoney()) + "₺");
             cardLayout.show(cards, myCard);
         } else
             showMessage("İŞLEM BAŞARISIZ");
@@ -1990,7 +1986,7 @@ public class bankWindow extends javax.swing.JFrame {
             showMessage("İŞLEM ONAYLANDI");
             moneyType = "";
             myCard = "menuCard";
-            balanceLabel.setText(changeDecimalFormat(calculateMoney()));
+            balanceLabel.setText("Bakiye : " + changeDecimalFormat(calculateMoney()) + "₺");
             cardLayout.show(cards, myCard);
         } else
             showMessage("İŞLEM BAŞARISIZ");
