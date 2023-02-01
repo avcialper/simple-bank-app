@@ -1,6 +1,6 @@
 # Simple Bank App
 In this project, I worte a simple bank application.<br/>
-These pictures are taken from the application interface.<br/><br/>
+These pictures are taken from the application interface.<br/>
 ## Login Page
 ![loginPage](https://user-images.githubusercontent.com/90919011/216056986-ff1ba5b3-68aa-4639-9873-0f2a801c06ba.png)
 ## Register Page
