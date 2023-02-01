@@ -10,7 +10,7 @@ These pictures are taken from the application interface.<br/>
 ## Withdrawal Page
 ![withdrawalPage](https://user-images.githubusercontent.com/90919011/216057433-afac64ea-6c84-413f-b5f5-6277b54d0356.png)
 ## Deposite Page
-![depositePage](https://user-images.githubusercontent.com/90919011/216057531-b43620f6-07e2-4dd3-bc91-4afb416e577a.png)
+![depositePage](https://user-images.githubusercontent.com/90919011/216061327-21b27d6d-232f-4def-ba9a-d17cc9d9e30c.png)
 ## Currency Page
 ![currencyPage](https://user-images.githubusercontent.com/90919011/216057655-1140e9d1-a266-4b82-af12-fe86a0e07b40.png)
 ## User Information Update Page
