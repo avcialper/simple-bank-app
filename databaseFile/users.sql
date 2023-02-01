@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 12 Oca 2023, 12:29:55
+-- Üretim Zamanı: 01 Şub 2023, 10:40:13
 -- Sunucu sürümü: 10.4.24-MariaDB
 -- PHP Sürümü: 8.1.6
 
@@ -45,7 +45,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ibanNumber`, `accountNumber`, `idNumber`, `name`, `surname`, `tlBalance`, `dolarBalance`, `euroBalance`, `password`, `email`) VALUES
-(9999, 999999, 99999999, 'admin', 'admin', 0, 0, 0, 999999, 'admin@gmail.com');
+(8888, 888888, 88888888, 'demo', 'demo', 0, 0, 0, 888888, 'demo@gmail.com'),
+(9999, 999999, 99999999, 'admin', 'admin', 999, 999, 999, 999999, 'admin@gmail.com');
 
 --
 -- Dökümü yapılmış tablolar için indeksler

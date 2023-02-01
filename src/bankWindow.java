@@ -26,7 +26,7 @@ public class bankWindow extends javax.swing.JFrame {
     CardLayout cardLayout;
     String myCard = "loginCard";
     String moneyType = "";
-    boolean timerB = false;
+    boolean timerBool = false;
     public bankWindow() {
         initComponents();
         cardLayout = (CardLayout)(cards.getLayout());
@@ -34,34 +34,62 @@ public class bankWindow extends javax.swing.JFrame {
             showMessage("DATABASE CONNECTION FAILED");
             System.exit(0);
         }
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon/wallet.png")));
     }
     
     // Go to previous page.
-    public void allExitButton(){
-        timerB = false;
+    public void allExit(){
+        timerBool = false;
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(myCard.equals("registerCard") || myCard.equals("menuCard")){
                     myCard = "loginCard";
-                    cardLayout.show(cards, "loginCard");
-                    timerB = true;
+                    cardLayout.show(cards, myCard);
+                    timerBool = true;
                 }
-                else if(myCard.equals("loginCard"))
-                    timerB = true;
                 else{
                     myCard = "menuCard";
-                    cardLayout.show(cards, "menuCard");
-                    timerB = true;
+                    cardLayout.show(cards, myCard);
+                    timerBool = true;
                 }
             }
         };
-        Timer timer = new Timer(1500, al);
+        Timer timer = new Timer(750, al);
         timer.setRepeats(false);
         timer.start();
-        cardLayout.show(cards, "windowCard");
-        if(timerB)
+        cardLayout.show(cards, "transitionCard");
+        if(timerBool)
             timer.stop();
+    }
+    
+    // Go to next page.
+    public void changeWindowDelay(){
+        timerBool = false;
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cards, myCard);
+                timerBool = true;
+            }
+        };
+        Timer timer = new Timer(750, al);
+        timer.setRepeats(false);
+        timer.start();
+        cardLayout.show(cards, "transitionCard");
+        if(timerBool)
+            timer.stop();
+    }
+    
+    // Checking that the value contains only numbers or .
+    public boolean valueType(String text){
+        String typeRegex;
+        if(myCard.equals("loginCard") || myCard.equals("registerCard") || myCard.equals("updateCard"))
+            typeRegex = "[0-9]+";
+        else
+            typeRegex = "[0-9]*[.,]{0,1}[0-9]{0,2}";
+        Pattern pattern = Pattern.compile(typeRegex);
+        return !pattern.matcher(text).matches();
     }
     
     // Check for spaces.
@@ -88,13 +116,10 @@ public class bankWindow extends javax.swing.JFrame {
     
     // Check e-mail availability.
     public boolean eMailRegex(String eMail) {
-        String eMailRegex = "^(.+)@(.+)$";
+        String eMailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
+        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         Pattern pattern = Pattern.compile(eMailRegex);
-        if (pattern.matcher(eMail).matches()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !pattern.matcher(eMail).matches();
     }
     
     // Set dollar price.
@@ -187,6 +212,8 @@ public class bankWindow extends javax.swing.JFrame {
         ibanCopyButton = new javax.swing.JButton();
         accounNumberCopyButton = new javax.swing.JButton();
         balanceLabel = new javax.swing.JLabel();
+        detailButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         withdrawButton = new javax.swing.JButton();
         currencyTransactionsButton = new javax.swing.JButton();
         userOperationButton = new javax.swing.JButton();
@@ -229,10 +256,10 @@ public class bankWindow extends javax.swing.JFrame {
         updatePasswordVisibleBox = new javax.swing.JCheckBox();
         updateExitButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         oldPasswordText = new javax.swing.JPasswordField();
         updatePasswordText = new javax.swing.JPasswordField();
         updateAgainPasswordText = new javax.swing.JPasswordField();
+        changePassword = new javax.swing.JCheckBox();
         currencyPanel = new javax.swing.JPanel();
         currencyExitButton = new javax.swing.JButton();
         currencyDolarRadioButton = new javax.swing.JRadioButton();
@@ -246,22 +273,35 @@ public class bankWindow extends javax.swing.JFrame {
         currencyTlLabel1 = new javax.swing.JLabel();
         currencyAmounthText = new javax.swing.JTextField();
         currencyApproveButton = new javax.swing.JButton();
-        windowPanel = new javax.swing.JPanel();
+        transitionPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        detailPanel = new javax.swing.JPanel();
+        detailNameLabel = new javax.swing.JLabel();
+        detailIdLabel = new javax.swing.JLabel();
+        detailIbanLabel = new javax.swing.JLabel();
+        detailAccountNumberLabel = new javax.swing.JLabel();
+        detailEmailLabel = new javax.swing.JLabel();
+        detailSurnameLabel = new javax.swing.JLabel();
+        detailTLLabel = new javax.swing.JLabel();
+        detailDolarLabel = new javax.swing.JLabel();
+        detailEuroLabel = new javax.swing.JLabel();
+        detailAllChangeTLLabel = new javax.swing.JLabel();
+        detailExitButton = new javax.swing.JButton();
+        copyUserInformatin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(300, 200, 0, 0));
-        setPreferredSize(new java.awt.Dimension(650, 360));
+        setPreferredSize(new java.awt.Dimension(683, 340));
         setResizable(false);
 
         cards.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cards.setPreferredSize(new java.awt.Dimension(550, 348));
         cards.setLayout(new java.awt.CardLayout());
 
         loginPanel.setBackground(new java.awt.Color(9, 6, 26));
-        loginPanel.setMaximumSize(new java.awt.Dimension(675, 316));
+        loginPanel.setMaximumSize(new java.awt.Dimension(683, 300));
+        loginPanel.setPreferredSize(new java.awt.Dimension(683, 330));
 
         idNumberRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         loginPageButtonGroup.add(idNumberRadioButton);
@@ -343,26 +383,25 @@ public class bankWindow extends javax.swing.JFrame {
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addComponent(loginPasswordField)
+                            .addComponent(newRegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(4, 4, 4)
+                        .addComponent(loginPasswordVisible)
+                        .addGap(50, 50, 50)
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(loginPanelLayout.createSequentialGroup()
-                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                                    .addComponent(loginPasswordField)
-                                    .addComponent(newRegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(4, 4, 4)
-                                .addComponent(loginPasswordVisible)
-                                .addGap(50, 50, 50)
-                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(accountNumberRadioButton)
-                                    .addComponent(idNumberRadioButton)))))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(accountNumberRadioButton)
+                            .addComponent(idNumberRadioButton))))
                 .addContainerGap(97, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                .addContainerGap(163, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,12 +424,13 @@ public class bankWindow extends javax.swing.JFrame {
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(newRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         cards.add(loginPanel, "loginCard");
 
         registerPanel.setBackground(new java.awt.Color(9, 6, 26));
+        registerPanel.setPreferredSize(new java.awt.Dimension(683, 300));
 
         registerExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerExitButton.setText("GERİ");
@@ -469,8 +509,8 @@ public class bankWindow extends javax.swing.JFrame {
             }
         });
 
-        copyButton.setBackground(new java.awt.Color(41, 8, 26));
-        copyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyy.png"))); // NOI18N
+        copyButton.setBackground(new java.awt.Color(9, 6, 26));
+        copyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyWhite.png"))); // NOI18N
         copyButton.setBorder(new javax.swing.border.MatteBorder(null));
         copyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -485,13 +525,9 @@ public class bankWindow extends javax.swing.JFrame {
             .addGroup(registerPanelLayout.createSequentialGroup()
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(registerPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
                         .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(registerPanelLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
+                                .addGap(29, 29, 29)
                                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(registerSurnameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(regsiterNameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -504,32 +540,36 @@ public class bankWindow extends javax.swing.JFrame {
                             .addComponent(registerAccountNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registerNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(7, 7, 7)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(registerPanelLayout.createSequentialGroup()
+                        .addComponent(copyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPanelLayout.createSequentialGroup()
+                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(registerPanelLayout.createSequentialGroup()
+                                        .addComponent(registerEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(7, 7, 7))
+                                    .addGroup(registerPanelLayout.createSequentialGroup()
+                                        .addComponent(registerIbanNumberLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(registerIbanNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(registerEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPanelLayout.createSequentialGroup()
                                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(registerPasswordLabel)
                                     .addComponent(registerPasswordAgainLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(registerPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(registerAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(registerPanelLayout.createSequentialGroup()
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(registerPanelLayout.createSequentialGroup()
-                                        .addComponent(copyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(registerIbanNumberLabel))
-                                    .addComponent(registerEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(registerEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                                    .addComponent(registerIbanNumberText))))
+                                    .addComponent(registerAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(15, 15, 15)
                         .addComponent(registerPasswordVisible))
                     .addGroup(registerPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(registerExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(registerExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         registerPanelLayout.setVerticalGroup(
             registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,24 +600,24 @@ public class bankWindow extends javax.swing.JFrame {
                                 .addGap(37, 37, 37)
                                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(registerPasswordAgainLabel)
-                                    .addComponent(registerAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12)
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registerEmailLabel)
-                                    .addComponent(registerEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(registerAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(registerPasswordVisible)
                             .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(registerPasswordLabel)
                                 .addComponent(registerPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registerEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerEmailLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(copyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(registerIbanNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(registerIbanNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         cards.add(registerPanel, "registerCard");
@@ -586,6 +626,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 5));
+        jPanel1.setPreferredSize(new java.awt.Dimension(610, 131));
 
         nameSurnameLabel.setBackground(new java.awt.Color(255, 255, 255));
         nameSurnameLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -603,7 +644,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         ibanCopyButton.setBackground(new java.awt.Color(102, 102, 102));
         ibanCopyButton.setForeground(new java.awt.Color(102, 102, 102));
-        ibanCopyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyy.png"))); // NOI18N
+        ibanCopyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyBlack.png"))); // NOI18N
         ibanCopyButton.setBorder(null);
         ibanCopyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -613,7 +654,7 @@ public class bankWindow extends javax.swing.JFrame {
 
         accounNumberCopyButton.setBackground(new java.awt.Color(102, 102, 102));
         accounNumberCopyButton.setForeground(new java.awt.Color(102, 102, 102));
-        accounNumberCopyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyy.png"))); // NOI18N
+        accounNumberCopyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyBlack.png"))); // NOI18N
         accounNumberCopyButton.setBorder(null);
         accounNumberCopyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -624,6 +665,23 @@ public class bankWindow extends javax.swing.JFrame {
         balanceLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         balanceLabel.setForeground(new java.awt.Color(255, 255, 255));
         balanceLabel.setText("balanceLabel");
+
+        detailButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        detailButton.setText("DETAY");
+        detailButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(102, 0, 0)));
+        detailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailButtonActionPerformed(evt);
+            }
+        });
+
+        refreshButton.setBackground(new java.awt.Color(102, 102, 102));
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -637,30 +695,42 @@ public class bankWindow extends javax.swing.JFrame {
                     .addComponent(accounNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ibanCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(accounNumberCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(balanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(accounNumberCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ibanCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(balanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(refreshButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nameSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ibanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ibanCopyButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(accounNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(accounNumberCopyButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nameSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ibanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ibanCopyButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(accounNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accounNumberCopyButton)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(balanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(balanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
         );
 
         withdrawButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -715,21 +785,21 @@ public class bankWindow extends javax.swing.JFrame {
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(114, 114, 114)
                         .addComponent(userOperationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
+                        .addGap(83, 83, 83)
                         .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuPanelLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(menuPanelLayout.createSequentialGroup()
                                 .addComponent(withdrawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(depositeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
+                                .addGap(38, 38, 38)
                                 .addComponent(currencyTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -745,12 +815,13 @@ public class bankWindow extends javax.swing.JFrame {
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userOperationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         cards.add(menuPanel, "menuCard");
 
         depositePanel.setBackground(new java.awt.Color(9, 6, 26));
+        depositePanel.setPreferredSize(new java.awt.Dimension(683, 360));
 
         depositeExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         depositeExitButton.setText("GERİ");
@@ -848,30 +919,31 @@ public class bankWindow extends javax.swing.JFrame {
         depOpPanel.setLayout(depOpPanelLayout);
         depOpPanelLayout.setHorizontalGroup(
             depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, depOpPanelLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(depBalanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(depApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, depOpPanelLayout.createSequentialGroup()
-                        .addComponent(depIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(depIbanText, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, depOpPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(depAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39))
             .addGroup(depOpPanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(depTlButton)
-                .addGap(18, 18, 18)
-                .addComponent(depDolarButton)
-                .addGap(18, 18, 18)
-                .addComponent(depEuroButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, depOpPanelLayout.createSequentialGroup()
+                        .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(depBalanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(depOpPanelLayout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(depApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(depIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(depAmounthText, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                            .addComponent(depIbanText))
+                        .addGap(39, 39, 39))
+                    .addGroup(depOpPanelLayout.createSequentialGroup()
+                        .addComponent(depTlButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(depDolarButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(depEuroButton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         depOpPanelLayout.setVerticalGroup(
             depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -899,19 +971,19 @@ public class bankWindow extends javax.swing.JFrame {
         depositePanelLayout.setHorizontalGroup(
             depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(depositePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(depositePanelLayout.createSequentialGroup()
-                        .addComponent(depOpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(72, 72, 72))
+                        .addContainerGap()
+                        .addComponent(depositeExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(depositePanelLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
                         .addGroup(depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(depositePanelLayout.createSequentialGroup()
                                 .addComponent(myAccount)
                                 .addGap(18, 18, 18)
                                 .addComponent(anotherAccount))
-                            .addComponent(depositeExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(depOpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         depositePanelLayout.setVerticalGroup(
             depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -924,7 +996,7 @@ public class bankWindow extends javax.swing.JFrame {
                     .addComponent(anotherAccount))
                 .addGap(18, 18, 18)
                 .addComponent(depOpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         cards.add(depositePanel, "depositeCard");
@@ -1002,17 +1074,20 @@ public class bankWindow extends javax.swing.JFrame {
             .addGroup(wtOPanelLayout.createSequentialGroup()
                 .addGroup(wtOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(wtOPanelLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(wtAmounthLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(wtAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(wtBalanceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(wtOPanelLayout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(wtApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(wtOPanelLayout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(wtBalanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addGroup(wtOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(wtOPanelLayout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(wtApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(wtOPanelLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(wtAmounthLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(wtAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 47, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         wtOPanelLayout.setVerticalGroup(
             wtOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1045,7 +1120,7 @@ public class bankWindow extends javax.swing.JFrame {
                             .addComponent(wtEuroRadioButton))
                         .addGap(63, 63, 63)
                         .addComponent(wtOPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         withdrawPanelLayout.setVerticalGroup(
             withdrawPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1061,7 +1136,7 @@ public class bankWindow extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(wtEuroRadioButton))
                     .addComponent(wtOPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         cards.add(withdrawPanel, "withdrawCard");
@@ -1129,98 +1204,98 @@ public class bankWindow extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ESKİ ŞİFRE :");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/thunder.png"))); // NOI18N
-
         oldPasswordText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
         updatePasswordText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
         updateAgainPasswordText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
+        changePassword.setBackground(new java.awt.Color(9, 6, 26));
+        changePassword.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        changePassword.setForeground(new java.awt.Color(255, 255, 255));
+        changePassword.setText("ŞİFREYİ DEĞİŞTİR");
+
         javax.swing.GroupLayout updatePanelLayout = new javax.swing.GroupLayout(updatePanel);
         updatePanel.setLayout(updatePanelLayout);
         updatePanelLayout.setHorizontalGroup(
             updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updatePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(updateExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updatePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(updateExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(updatePanelLayout.createSequentialGroup()
+                        .addGap(268, 268, 268)
+                        .addComponent(updateExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(updatePanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updatePasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(updatePanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(updatePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oldPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1))
+                            .addComponent(updateNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(updatePanelLayout.createSequentialGroup()
                                 .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(updateNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(updatePasswordVisibleBox)))
-                .addGap(27, 27, 27)
-                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(updateExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatePanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                                    .addComponent(updatePasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(updateAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(updatePanelLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(changePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(oldPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                                .addGap(1, 1, 1)
+                                .addComponent(updatePasswordVisibleBox)))))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         updatePanelLayout.setVerticalGroup(
             updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updatePanelLayout.createSequentialGroup()
-                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(updatePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(updateExitButton))
-                    .addGroup(updatePanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(updatePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(updateExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(updatePanelLayout.createSequentialGroup()
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(updateNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(updateSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(updateEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(updatePasswordVisibleBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(oldPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updatePasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(updateExitButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(changePassword)
+                .addGap(18, 18, 18)
+                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, updatePanelLayout.createSequentialGroup()
+                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(updateNameText)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(updateEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, updatePanelLayout.createSequentialGroup()
+                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updatePasswordVisibleBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(oldPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updatePasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(updateExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
         );
 
         cards.add(updatePanel, "updateCard");
@@ -1309,31 +1384,28 @@ public class bankWindow extends javax.swing.JFrame {
         currencyOpLayout.setHorizontalGroup(
             currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(currencyOpLayout.createSequentialGroup()
-                .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(24, 24, 24)
+                .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, currencyOpLayout.createSequentialGroup()
+                        .addComponent(currencyTlLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(currencyAmounthText))
                     .addGroup(currencyOpLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(currencyOpLayout.createSequentialGroup()
-                                .addComponent(buyRadioButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(sellRadioButton)
-                                .addGap(32, 32, 32)
-                                .addComponent(sellBuyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(currencyOpLayout.createSequentialGroup()
-                                .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(currencyOpLayout.createSequentialGroup()
-                                        .addComponent(currencyTlLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(currencyAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(currencyOpLayout.createSequentialGroup()
-                                        .addComponent(currencyTlLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(currencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(47, 47, 47))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(currencyTlLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(currencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(currencyOpLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(currencyApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addComponent(buyRadioButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(sellRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sellBuyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(44, 44, 44))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, currencyOpLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(currencyApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(166, 166, 166))
         );
         currencyOpLayout.setVerticalGroup(
             currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1372,7 +1444,7 @@ public class bankWindow extends javax.swing.JFrame {
                             .addComponent(currencyDolarRadioButton))
                         .addGap(18, 18, 18)
                         .addComponent(currencyOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         currencyPanelLayout.setVerticalGroup(
             currencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1388,12 +1460,12 @@ public class bankWindow extends javax.swing.JFrame {
                     .addGroup(currencyPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(currencyOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         cards.add(currencyPanel, "currencyCard");
 
-        windowPanel.setBackground(new java.awt.Color(9, 6, 26));
+        transitionPanel.setBackground(new java.awt.Color(9, 6, 26));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 70)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -1406,33 +1478,177 @@ public class bankWindow extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("H");
 
-        javax.swing.GroupLayout windowPanelLayout = new javax.swing.GroupLayout(windowPanel);
-        windowPanel.setLayout(windowPanelLayout);
-        windowPanelLayout.setHorizontalGroup(
-            windowPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(windowPanelLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
+        javax.swing.GroupLayout transitionPanelLayout = new javax.swing.GroupLayout(transitionPanel);
+        transitionPanel.setLayout(transitionPanelLayout);
+        transitionPanelLayout.setHorizontalGroup(
+            transitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transitionPanelLayout.createSequentialGroup()
+                .addGap(162, 162, 162)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
-        windowPanelLayout.setVerticalGroup(
-            windowPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, windowPanelLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addGroup(windowPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        transitionPanelLayout.setVerticalGroup(
+            transitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transitionPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(transitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(windowPanelLayout.createSequentialGroup()
+                    .addGroup(transitionPanelLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(82, 82, 82))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
-        cards.add(windowPanel, "windowCard");
+        cards.add(transitionPanel, "transitionCard");
+
+        detailPanel.setBackground(new java.awt.Color(9, 6, 26));
+        detailPanel.setPreferredSize(new java.awt.Dimension(683, 360));
+
+        detailNameLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailNameLabel.setText("detailName");
+        detailNameLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailIdLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailIdLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailIdLabel.setText("detailId");
+        detailIdLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailIbanLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailIbanLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailIbanLabel.setText("detailIban");
+        detailIbanLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailAccountNumberLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailAccountNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailAccountNumberLabel.setText("detailAccountNumber");
+        detailAccountNumberLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailEmailLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailEmailLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailEmailLabel.setText("detailEMail");
+        detailEmailLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailSurnameLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailSurnameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailSurnameLabel.setText("detailSurname");
+        detailSurnameLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailTLLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailTLLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailTLLabel.setText("detailTL");
+        detailTLLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailDolarLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailDolarLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailDolarLabel.setText("detailDolar");
+        detailDolarLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailEuroLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailEuroLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailEuroLabel.setText("detailEuro");
+        detailEuroLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailAllChangeTLLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        detailAllChangeTLLabel.setForeground(new java.awt.Color(255, 255, 255));
+        detailAllChangeTLLabel.setText("detailAllChangeTL");
+        detailAllChangeTLLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+
+        detailExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        detailExitButton.setText("GERİ");
+        detailExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        detailExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailExitButtonActionPerformed(evt);
+            }
+        });
+
+        copyUserInformatin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        copyUserInformatin.setText("BİLGİLERİ KOPYALA");
+        copyUserInformatin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 3));
+        copyUserInformatin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyUserInformatinActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout detailPanelLayout = new javax.swing.GroupLayout(detailPanel);
+        detailPanel.setLayout(detailPanelLayout);
+        detailPanelLayout.setHorizontalGroup(
+            detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailPanelLayout.createSequentialGroup()
+                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detailPanelLayout.createSequentialGroup()
+                        .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detailPanelLayout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(detailAccountNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(detailEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailPanelLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(detailIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(detailNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(detailIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(28, 28, 28)
+                        .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(detailSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(detailEuroLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(detailDolarLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(detailTLLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(detailAllChangeTLLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(detailPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(detailExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(detailPanelLayout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(copyUserInformatin)))
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+        detailPanelLayout.setVerticalGroup(
+            detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(detailExitButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detailPanelLayout.createSequentialGroup()
+                        .addComponent(detailNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detailIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detailIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detailAccountNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detailEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(detailPanelLayout.createSequentialGroup()
+                        .addComponent(detailSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detailPanelLayout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(detailEuroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(detailPanelLayout.createSequentialGroup()
+                                .addComponent(detailTLLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(detailDolarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detailAllChangeTLLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(copyUserInformatin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        cards.add(detailPanel, "detailPanel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1442,7 +1658,7 @@ public class bankWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cards, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+            .addComponent(cards, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1528,11 +1744,16 @@ public class bankWindow extends javax.swing.JFrame {
         copyButton.setVisible(false);
         registerButton.setText("HESAP OLUŞTUR");
         myCard = "registerCard";
-        cardLayout.show(cards, myCard);
+        changeWindowDelay();
     }//GEN-LAST:event_newRegisterButtonActionPerformed
 
     private void registerExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerExitButtonActionPerformed
-       allExitButton();
+        loginPageButtonGroup.clearSelection();
+        loginTextField.setText((""));
+        loginPasswordField.setText("");
+        loginPasswordVisible.setSelected(false);
+        loginPasswordField.setEchoChar('•');
+        allExit();
     }//GEN-LAST:event_registerExitButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
@@ -1541,12 +1762,16 @@ public class bankWindow extends javax.swing.JFrame {
         if(registerButton.getText().equals("HESAP OLUŞTUR")) {
             if(registerInfoIsEmpty())
                 showMessage("ALANLAR BOŞ BIRAKILAMAZ.");
+            else if(valueType(registerIdNumberText.getText()))
+                showMessage("KİMLİK NUMARASI SADECE SAYI İÇERMELİDİR.");
             else if (registerIdNumberText.getText().length() != 8)
-                showMessage("KİMLİK NUMARASI 8 KARAKTERLİ OLMAK ZORUNDADIR.");
+                showMessage("KİMLİK NUMARASI 8 HANELİ OLMAK ZORUNDADIR.");
             else if (databaseOperation.registeredIdNumberCheck(Integer.valueOf(registerIdNumberText.getText())))
                 showMessage("KİMLİK NUMARASI SİSTEME KAYITLI.");
+            else if (valueType(String.valueOf(registerPasswordText.getPassword())))
+                showMessage("ŞİFRE YALNIZCA SAYI İÇERMELİDİR.");
             else if(String.valueOf(registerPasswordText.getPassword()).length() != 6)
-                showMessage("ŞİFRE 6 KARAKTERLİ OLMAK ZORUNDADIR");
+                showMessage("ŞİFRE 6 HANELİ OLMAK ZORUNDADIR");
             else if(String.valueOf(registerPasswordText.getPassword()).equals("000000"))
                 showMessage("ŞİFRE 000000 OLAMAZ");
             else if (!String.valueOf(registerPasswordText.getPassword()).equals(String.valueOf(registerAgainPasswordText.getPassword())))
@@ -1568,12 +1793,16 @@ public class bankWindow extends javax.swing.JFrame {
         } else if ((registerButton.getText().equals("ONAYLA VE KAYDET"))) {
             if(registerInfoIsEmpty())
                 showMessage("ALANLAR BOŞ BIRAKILAMAZ.");
+            else if(valueType(registerIdNumberText.getText()))
+                showMessage("KİMLİK NUMARASI SADECE SAYI İÇERMELİDİR.");
             else if (registerIdNumberText.getText().length() != 8)
-                showMessage("KİMLİK NUMARASI 8 KARAKTERLİ OLMAK ZORUNDADIR.");
+                showMessage("KİMLİK NUMARASI 8 HANELİ OLMAK ZORUNDADIR.");
             else if (databaseOperation.registeredIdNumberCheck(Integer.valueOf(registerIdNumberText.getText())))
                 showMessage("KİMLİK NUMARASI SİSTEME KAYITLI.");
+            else if (valueType(String.valueOf(registerPasswordText.getPassword())))
+                showMessage("ŞİFRE YALNIZCA SAYI İÇERMELİDİR.");
             else if(String.valueOf(registerPasswordText.getPassword()).length() != 6)
-                showMessage("ŞİFRE 6 KARAKTERLİ OLMAK ZORUNDADIR");
+                showMessage("ŞİFRE 6 HANELİ OLMAK ZORUNDADIR");
             else if (!String.valueOf(registerPasswordText.getPassword()).equals(String.valueOf(registerAgainPasswordText.getPassword())))
                 showMessage("ŞİFRE İLE ŞİFRE TEKRARI UYUŞMAMAKTADIR.");
             else if (eMailRegex(registerEmailText.getText()))
@@ -1594,7 +1823,7 @@ public class bankWindow extends javax.swing.JFrame {
                 loginPasswordVisible.setSelected(false);
                 loginPasswordField.setEchoChar('•');
                 showMessage("KAYIT TAMAMLANDI");
-                cardLayout.show(cards, "loginCard");
+                allExit();
             }
         } 
         
@@ -1623,8 +1852,14 @@ public class bankWindow extends javax.swing.JFrame {
             showMessage("ALANLAR BOŞ BIRAKILAMAZ");
         else if(!idNumberRadioButton.isSelected() && !accountNumberRadioButton.isSelected())
             showMessage("LÜTFEN BİR GİRİŞ TÜRÜ SEÇİNİZ");
+        else if(idNumberRadioButton.isSelected() && loginTextField.getText().length() != 8)
+            showMessage("KİMLİK NUMARASI 8 HANELİ OLMAK ZORUNDADIR");
+        else if(accountNumberRadioButton.isSelected() && loginTextField.getText().length() != 6)
+            showMessage("HESAP NUMARASI 6 HANELİ OLMAK ZORUNDADIR");
+        else if(valueType(loginTextField.getText()) || valueType(String.valueOf(loginPasswordField.getPassword())))
+            showMessage("GİRİŞ BİLGİLERİ HARF İÇEREMEZ");
         else if (String.valueOf(loginPasswordField.getPassword()).length() != 6)
-                showMessage("ŞİFRE 6 KARAKTERLİ OLMAK ZORUNDADIR");
+                showMessage("ŞİFRE 6 HANELİ OLMAK ZORUNDADIR");
         else{
             checkLogin = userAction.userLoginWithIdNumber(Integer.valueOf(loginTextField.getText()),
                     Integer.valueOf(String.valueOf(loginPasswordField.getPassword())));
@@ -1653,7 +1888,7 @@ public class bankWindow extends javax.swing.JFrame {
             loginPasswordField.setEchoChar('•');
             loginTextField.setText("");
             myCard = "menuCard";
-            cardLayout.show(cards, myCard);
+            changeWindowDelay();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -1670,11 +1905,11 @@ public class bankWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_accounNumberCopyButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        allExitButton();
+        allExit();
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void depositeExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositeExitButtonActionPerformed
-        allExitButton();
+        allExit();
     }//GEN-LAST:event_depositeExitButtonActionPerformed
 
     private void myAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myAccountActionPerformed
@@ -1700,7 +1935,7 @@ public class bankWindow extends javax.swing.JFrame {
         depOpPanel.setVisible(false);
         moneyType = "";
         myCard = "depositeCard";
-        cardLayout.show(cards, myCard);
+        changeWindowDelay();
     }//GEN-LAST:event_depositeButtonActionPerformed
 
     private void depTlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depTlButtonActionPerformed
@@ -1731,15 +1966,19 @@ public class bankWindow extends javax.swing.JFrame {
                 showMessage("TUTAR GİRİNİZ");
                 return;
             }
-            else if(Integer.valueOf(depAmounthText.getText()) < 0) {
+            else if(valueType(depAmounthText.getText())){
+                showMessage("HATALI TUTAR GİRİŞİ.\n(TUTAR HARF İÇEREMEZ, VİRGÜLDEN SONRA EN FAZLA 2 BASAMAK GELEBİLİR.)");
+                return;
+            }
+            else if(Double.parseDouble(depAmounthText.getText().trim().replace(',', '.')) < 0) {
                 showMessage("TUTAR NEGATİF OLAMAZ");
                 return;
             }
-            else if(Integer.valueOf(depAmounthText.getText()) == 0) {
+            else if(Double.parseDouble(depAmounthText.getText().trim().replace(',', '.')) == 0) {
                 showMessage("TUTAR 0 OLAMAZ");
                 return;
             }
-            double addedMoney = Double.valueOf(depAmounthText.getText());
+            double addedMoney = Double.parseDouble(depAmounthText.getText().trim().replace(',', '.'));
             if(moneyType.equals("TL"))
                 userInfo.setTlBalance(addedMoney + userInfo.getTlBalance());
             else if(moneyType.equals("DOLAR"))
@@ -1750,8 +1989,7 @@ public class bankWindow extends javax.swing.JFrame {
                 moneyType = "";
                 showMessage("İŞLEM ONAYLANDI");
                 balanceLabel.setText(changeDecimalFormat(calculateMoney()));
-                myCard = "menuCard";
-                cardLayout.show(cards, myCard);
+                allExit();
             }
         } else if(anotherAccount.isSelected()) {
             if(moneyType.equals("")){
@@ -1762,15 +2000,24 @@ public class bankWindow extends javax.swing.JFrame {
                 showMessage("ALANLARI DOLDURUNUZ");
                 return;
             }
-            else if(Integer.valueOf(depAmounthText.getText()) < 0) {
+            else if(valueType(depAmounthText.getText())){
+                System.out.println("afşl");
+                showMessage("TUTAR HARF İÇEREMEZ");
+                return;
+            }
+            else if(Double.parseDouble(depAmounthText.getText().trim().replace(',', '.')) < 0) {
                 showMessage("TUTAR NEGATİF DEĞER ALAMAZ");
                 return;
             }
-            else if(Integer.valueOf(depAmounthText.getText()) == 0) {
+            else if(Double.parseDouble(depAmounthText.getText().trim().replace(',', '.')) == 0) {
                 showMessage("TUTAR 0 OLAMAZ");
                 return;
             }
-            double sentMoney = Double.valueOf(depAmounthText.getText());
+            double sentMoney = Double.parseDouble(depAmounthText.getText().trim().replace(',', '.'));
+            if(valueType(depIbanText.getText())){
+                showMessage("İBAN HARF İÇEREMEZ");
+                return;
+            }
             int recipientAccountIban = Integer.valueOf(depIbanText.getText());
             if(databaseOperation.registeredIbanNumberControl(Integer.valueOf(depIbanText.getText()))) {
                 UserInfo recipient = databaseOperation.getUserInfoFromDatabaseWithIbanNumber(Integer.valueOf(depIbanText.getText()));
@@ -1807,10 +2054,9 @@ public class bankWindow extends javax.swing.JFrame {
                 }
                 if(databaseOperation.updateMoneyBalance(userInfo) && databaseOperation.updateMoneyBalance(recipient)){
                     moneyType = "";
-                    myCard = "menuCard";
                     balanceLabel.setText("Bakiye : " + changeDecimalFormat(calculateMoney()) + "₺");
                     showMessage("İŞLEM ONAYLANDI");
-                    cardLayout.show(cards, myCard);
+                    allExit();
                 } else 
                     showMessage("İŞLEM BAŞARISIZ");
             }
@@ -1820,7 +2066,7 @@ public class bankWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_depApproveButtonActionPerformed
 
     private void withdrawExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawExitButtonActionPerformed
-        allExitButton();
+        allExit();
     }//GEN-LAST:event_withdrawExitButtonActionPerformed
 
     private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
@@ -1829,7 +2075,7 @@ public class bankWindow extends javax.swing.JFrame {
         wtBalanceLabel.setText("BAKİYE : ");
         wtAmounthText.setText("");
         withdrawButonGroup.clearSelection();
-        cardLayout.show(cards, myCard);
+        changeWindowDelay();
     }//GEN-LAST:event_withdrawButtonActionPerformed
 
     private void wtApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wtApproveButtonActionPerformed
@@ -1841,11 +2087,15 @@ public class bankWindow extends javax.swing.JFrame {
             showMessage("TUTAR GİRİNİZ");
             return;
         }
-        else if(Integer.valueOf(wtAmounthText.getText()) <= 0){
+        else if(valueType(wtAmounthText.getText())){
+            showMessage("HATALI TUTAR GİRİŞİ.\n(TUTAR HARF İÇEREMEZ, VİRGÜLDEN SONRA EN FAZLA 2 BASAMAK GELEBİLİR.)");
+            return;
+        }
+        else if(Double.parseDouble(wtAmounthText.getText().trim().replace(',', '.')) <= 0){
             showMessage("GEÇERLİ TUTAR GİRİNİZ");
             return;
         }
-        double wtMoney = Double.valueOf(wtAmounthText.getText());
+        double wtMoney = Double.valueOf((wtAmounthText.getText().trim()).replace(',', '.'));
         if(moneyType.equals("TL")){
             if(wtMoney > userInfo.getTlBalance()){
                 showMessage("YETERSİZ BAKİYE");
@@ -1867,10 +2117,9 @@ public class bankWindow extends javax.swing.JFrame {
         }
         if(databaseOperation.updateMoneyBalance(userInfo)) {
             moneyType = "";
-            myCard = "menuCard";
             showMessage("İŞLEM ONAYLANDI");
             balanceLabel.setText("Bakiye : " + changeDecimalFormat(calculateMoney()) + "₺");
-            cardLayout.show(cards, myCard);
+            allExit();
         } else
             showMessage("İŞLEM BAŞARISIZ");
     }//GEN-LAST:event_wtApproveButtonActionPerformed
@@ -1900,11 +2149,11 @@ public class bankWindow extends javax.swing.JFrame {
         currencyOp.setVisible(false);
         moneyType = "";
         myCard = "currencyCard";
-        cardLayout.show(cards, myCard);
+        changeWindowDelay();
     }//GEN-LAST:event_currencyTransactionsButtonActionPerformed
 
     private void currencyExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currencyExitButtonActionPerformed
-        allExitButton();
+        allExit();
         currencyLabel.setText(myCard);
     }//GEN-LAST:event_currencyExitButtonActionPerformed
 
@@ -1930,11 +2179,16 @@ public class bankWindow extends javax.swing.JFrame {
             } else if(currencyAmounthText.getText().equals("")){
                 showMessage("TUTAR GİRİNİZ");
                 return;
-            } else if(Integer.valueOf(currencyAmounthText.getText()) <= 0) {
+            }
+            else if(valueType(currencyAmounthText.getText())){
+                showMessage("HATALI TUTAR GİRİŞİ.\n(TUTAR HARF İÇEREMEZ, VİRGÜLDEN SONRA EN FAZLA 2 BASAMAK GELEBİLİR.)");
+                return;
+            }
+            else if(Double.parseDouble(currencyAmounthText.getText().trim().replace(',', '.')) <= 0) {
                 showMessage("GEÇERLİ TUTAR GİRİNİZ");
                 return;
             }
-            double currencyAmounth = Double.valueOf(currencyAmounthText.getText());
+            double currencyAmounth = Double.parseDouble(currencyAmounthText.getText().trim().replace(',', '.'));
             if(buyRadioButton.isSelected()){
                 if(currencyAmounth * moneysInfo.getBuyDolar() > userInfo.getTlBalance()){
                     showMessage("YETERSİZ BAKİYE");
@@ -1959,11 +2213,16 @@ public class bankWindow extends javax.swing.JFrame {
             } else if(currencyAmounthText.getText().equals("")){
                 showMessage("TUTAR GİRİNİZ");
                 return;
-            } else if(Integer.valueOf(currencyAmounthText.getText()) <= 0) {
+            }
+            else if(valueType(currencyAmounthText.getText())){
+                showMessage("TUTAR HARF İÇEREMEZ");
+                return;
+            }
+            else if(Double.parseDouble(currencyAmounthText.getText().trim().replace(',', '.')) <= 0) {
                 showMessage("GEÇERLİ TUTAR GİRİNİZ");
                 return;
             }
-            double currencyAmounth = Double.valueOf(currencyAmounthText.getText());
+            double currencyAmounth = Double.parseDouble(currencyAmounthText.getText().trim().replace(',', '.'));
             if(buyRadioButton.isSelected()){
                 if(currencyAmounth * moneysInfo.getBuyEuro() > userInfo.getTlBalance()){
                     showMessage("YETERSİZ BAKİYE");
@@ -1985,18 +2244,18 @@ public class bankWindow extends javax.swing.JFrame {
         if(databaseOperation.updateMoneyBalance(userInfo)){
             showMessage("İŞLEM ONAYLANDI");
             moneyType = "";
-            myCard = "menuCard";
             balanceLabel.setText("Bakiye : " + changeDecimalFormat(calculateMoney()) + "₺");
-            cardLayout.show(cards, myCard);
+            allExit();
         } else
             showMessage("İŞLEM BAŞARISIZ");
     }//GEN-LAST:event_currencyApproveButtonActionPerformed
 
     private void updateExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateExitButtonActionPerformed
-        allExitButton();
+        allExit();
     }//GEN-LAST:event_updateExitButtonActionPerformed
 
     private void userOperationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userOperationButtonActionPerformed
+        changePassword.setSelected(false);
         updateNameText.setText(userInfo.getName());
         updateSurnameText.setText(userInfo.getSurname());
         updateEmailText.setText(userInfo.getEmail());
@@ -2005,7 +2264,7 @@ public class bankWindow extends javax.swing.JFrame {
         updateAgainPasswordText.setText("");
         updatePasswordVisibleBox.setSelected(false);
         myCard = "updateCard";
-        cardLayout.show(cards, myCard);
+        changeWindowDelay();
     }//GEN-LAST:event_userOperationButtonActionPerformed
 
     private void updatePasswordVisibleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePasswordVisibleBoxActionPerformed
@@ -2021,39 +2280,117 @@ public class bankWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_updatePasswordVisibleBoxActionPerformed
 
     private void updateExitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateExitButton1ActionPerformed
-        if(updateNameText.getText().equals("") || updateSurnameText.getText().equals("") || updateEmailText.getText().equals("") ||
+        if(changePassword.isSelected()){
+            if(updateNameText.getText().equals("") || updateSurnameText.getText().equals("") || updateEmailText.getText().equals("") ||
                 String.valueOf(oldPasswordText.getPassword()).equals("") || String.valueOf(updatePasswordText.getPassword()).equals("") ||
-                String.valueOf(updateAgainPasswordText.getPassword()).equals(""))
-            showMessage("ALANLARI DOLDURUNUZ");
-        else if (eMailRegex(updateEmailText.getText()))
-            showMessage("E-MAİL KURALLARA UYGUN DEĞİLDİR.");
-        else if(databaseOperation.registeredEmailCheck(updateEmailText.getText()))
-            showMessage("SİSTEME KAYITLI E-MAİL");
-        else if( String.valueOf(oldPasswordText.getPassword()).length() != 6 ||
-            String.valueOf(updatePasswordText.getPassword()).length() != 6 ||
-            String.valueOf(updateAgainPasswordText.getPassword()).length() != 6)
-            showMessage("ŞİFRE 6 KARAKTERLİ OLMAK ZORUNDADIR");
-        else if(!String.valueOf(userInfo.getPassword()).equals(String.valueOf(oldPasswordText.getPassword())))
-            showMessage("ESKİ ŞİFRE HATALI");
-        else if(String.valueOf(updatePasswordText.getPassword()).equals("000000"))
-            showMessage("ŞİFRE 000000 OLAMAZ");
-        else if(String.valueOf(userInfo.getPassword()).equals(String.valueOf(updatePasswordText.getPassword())))
-            showMessage("YENİ ŞİFRE ESKİ ŞİFRE İLE AYNI OLMAMALIDIR");
-        else if(!String.valueOf(updatePasswordText.getPassword()).equals(String.valueOf(updateAgainPasswordText.getPassword())))
-            showMessage("YENİ ŞİFRE VE TEKRARI UYUŞMAMAKTADIR");
-        else{
-            userInfo.setName(updateNameText.getText());
-            userInfo.setSurname(updateSurnameText.getText());
-            userInfo.setEmail(updateEmailText.getText());
-            userInfo.setPassword(Integer.valueOf(String.valueOf(updatePasswordText.getPassword())));
-            if(databaseOperation.updateUserInfo(userInfo)){
-                myCard = "menuCard";
-                showMessage("İŞLEM ONAYLANDI");
-                cardLayout.show(cards, myCard);
-            } else
-                showMessage("İŞLEM BAŞARISIZ");
+                String.valueOf(updateAgainPasswordText.getPassword()).equals("")){
+                showMessage("ALANLARI DOLDURUNUZ");
+                return;
+            }
+            else if(valueType(String.valueOf(oldPasswordText.getPassword())) || valueType(String.valueOf(updateAgainPasswordText.getPassword()))){
+                showMessage("ŞİFRE HARF İÇEREMEZ");
+                return;
+            }
+            else if( String.valueOf(oldPasswordText.getPassword()).length() != 6 ||
+                String.valueOf(updatePasswordText.getPassword()).length() != 6 ||
+                String.valueOf(updateAgainPasswordText.getPassword()).length() != 6){
+                showMessage("ŞİFRE 6 HANELİ OLMAK ZORUNDADIR");
+                return;
+            }
+            else if(!(userInfo.getPassword() == Integer.parseInt(String.valueOf(oldPasswordText.getPassword())))){
+                showMessage("ESKİ ŞİFRE HATALI");
+                return;
+            }
+            else if(String.valueOf(updatePasswordText.getPassword()).equals("000000")){
+                showMessage("ŞİFRE 000000 OLAMAZ");
+                return;
+            }
+            else if(String.valueOf(userInfo.getPassword()).equals(String.valueOf(updatePasswordText.getPassword()))){
+                showMessage("YENİ ŞİFRE ESKİ ŞİFRE İLE AYNI OLMAMALIDIR");
+                return;
+            }
+            else if(!String.valueOf(updatePasswordText.getPassword()).equals(String.valueOf(updateAgainPasswordText.getPassword()))){
+                showMessage("YENİ ŞİFRE VE TEKRARI UYUŞMAMAKTADIR");
+                return;
+            }
+            else
+                userInfo.setPassword(Integer.parseInt(String.valueOf(updatePasswordText.getPassword())));
         }
+        else if (eMailRegex(updateEmailText.getText())){
+            showMessage("E-MAİL KURALLARA UYGUN DEĞİLDİR.");
+            return;
+        }
+        else if(!updateEmailText.getText().equals(userInfo.getEmail())){
+            if(databaseOperation.registeredEmailCheck(updateEmailText.getText())){
+                showMessage("SİSTEME KAYITLI E-MAİL");
+                return;
+            }
+        }
+        else if(updateEmailText.getText().equals(userInfo.getEmail()) && updateNameText.getText().equals(userInfo.getName())
+                && updateSurnameText.getText().equals(userInfo.getSurname())){
+            showMessage("HERHANGİ BİR DEĞİŞİKLİK YAPILMADI");
+            allExit();
+            return;
+        }
+        userInfo.setName(updateNameText.getText());
+        userInfo.setSurname(updateSurnameText.getText());
+        userInfo.setEmail(updateEmailText.getText());
+        if (databaseOperation.updateUserInfo(userInfo)) {
+            balanceLabel.setText("BAKİYE : " + changeDecimalFormat(calculateMoney()) + "₺");
+            nameSurnameLabel.setText(userInfo.getName() + " " + userInfo.getSurname());
+            ibanLabel.setText("İban : " + userInfo.getIbanNumber());
+            accounNumberLabel.setText("Hesap Numarası : " + userInfo.getAccountNumber());
+            showMessage("İŞLEM ONAYLANDI");
+            allExit();
+        } else
+            showMessage("İŞLEM BAŞARISIZ");
     }//GEN-LAST:event_updateExitButton1ActionPerformed
+
+    private void detailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailButtonActionPerformed
+        myCard = "detailPanel";
+        detailNameLabel.setText("Ad : " + userInfo.getName());
+        detailSurnameLabel.setText("Soyad : " + userInfo.getSurname());
+        detailAccountNumberLabel.setText("Hesap Numarası : " + String.valueOf(userInfo.getAccountNumber()));
+        detailAllChangeTLLabel.setText("Hesap Bakiyesi : " + changeDecimalFormat(calculateMoney()) + "₺");
+        detailDolarLabel.setText("Dolar : " + changeDecimalFormat(userInfo.getDolarBalance()) + "$");
+        detailEmailLabel.setText("E-mail : " + userInfo.getEmail());
+        detailEuroLabel.setText(("Euro : " + changeDecimalFormat(userInfo.getEuroBalance())) + "£");
+        detailIbanLabel.setText("İban : " + String.valueOf(userInfo.getIbanNumber()));
+        detailIdLabel.setText("Kimlik Numarası : " + String.valueOf(userInfo.getIdNumber()));
+        detailTLLabel.setText("TL : " + String.valueOf(userInfo.getTlBalance()) + "₺");
+        changeWindowDelay();
+    }//GEN-LAST:event_detailButtonActionPerformed
+
+    private void detailExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailExitButtonActionPerformed
+        allExit();
+    }//GEN-LAST:event_detailExitButtonActionPerformed
+
+    private void copyUserInformatinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyUserInformatinActionPerformed
+        String information = 
+                "Ad : " + userInfo.getName() +
+                "\nSoyad : " + userInfo.getSurname() + 
+                "\nKimlik Numarası : " + userInfo.getIdNumber() +
+                "\nHesap Numarası : " + userInfo.getAccountNumber() +
+                "\nİban : " + userInfo.getIbanNumber() +
+                "\nE-posta : " + userInfo.getEmail() +
+                "\nTL Bakiye : " + userInfo.getTlBalance() +
+                "₺\nDolar Bakiye : " + userInfo.getDolarBalance() +
+                "$\nEuro Bakiye : " + userInfo.getEuroBalance() +
+                "€\nToplam Bakiye : " + changeDecimalFormat(calculateMoney());
+        StringSelection stringSelection = new StringSelection(information);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+        showMessage("BİLGİLER KOPYALANDI");
+    }//GEN-LAST:event_copyUserInformatinActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        userInfo = databaseOperation.getUserInfoFromDatabaseWithAccountNumber(userInfo.getAccountNumber());
+        balanceLabel.setText("BAKİYE : " + changeDecimalFormat(calculateMoney()) + "₺");
+        nameSurnameLabel.setText(userInfo.getName() + " " + userInfo.getSurname());
+        ibanLabel.setText("İban : " + userInfo.getIbanNumber());
+        accounNumberLabel.setText("Hesap Numarası : " + userInfo.getAccountNumber());
+        changeWindowDelay();
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     public static void main(String args[]) {
         
@@ -2072,7 +2409,9 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JRadioButton buyRadioButton;
     private javax.swing.JPanel cards;
+    private javax.swing.JCheckBox changePassword;
     private javax.swing.JButton copyButton;
+    private javax.swing.JButton copyUserInformatin;
     private javax.swing.JTextField currencyAmounthText;
     private javax.swing.JButton currencyApproveButton;
     private javax.swing.ButtonGroup currencyButtonGroup1;
@@ -2100,6 +2439,19 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JButton depositeButton;
     private javax.swing.JButton depositeExitButton;
     private javax.swing.JPanel depositePanel;
+    private javax.swing.JLabel detailAccountNumberLabel;
+    private javax.swing.JLabel detailAllChangeTLLabel;
+    private javax.swing.JButton detailButton;
+    private javax.swing.JLabel detailDolarLabel;
+    private javax.swing.JLabel detailEmailLabel;
+    private javax.swing.JLabel detailEuroLabel;
+    private javax.swing.JButton detailExitButton;
+    private javax.swing.JLabel detailIbanLabel;
+    private javax.swing.JLabel detailIdLabel;
+    private javax.swing.JLabel detailNameLabel;
+    private javax.swing.JPanel detailPanel;
+    private javax.swing.JLabel detailSurnameLabel;
+    private javax.swing.JLabel detailTLLabel;
     private javax.swing.JButton ibanCopyButton;
     private javax.swing.JLabel ibanLabel;
     private javax.swing.JRadioButton idNumberRadioButton;
@@ -2114,7 +2466,6 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
     private javax.swing.ButtonGroup loginPageButtonGroup;
@@ -2128,6 +2479,7 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JLabel nameSurnameLabel;
     private javax.swing.JButton newRegisterButton;
     private javax.swing.JPasswordField oldPasswordText;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JLabel registerAccountNumberLabel;
     private javax.swing.JTextField registerAccountNumberText;
     private javax.swing.JPasswordField registerAgainPasswordText;
@@ -2150,6 +2502,7 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JLabel regsiterNameLabel;
     private javax.swing.JLabel sellBuyLabel;
     private javax.swing.JRadioButton sellRadioButton;
+    private javax.swing.JPanel transitionPanel;
     private javax.swing.JPasswordField updateAgainPasswordText;
     private javax.swing.JTextField updateEmailText;
     private javax.swing.JButton updateExitButton;
@@ -2160,7 +2513,6 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JCheckBox updatePasswordVisibleBox;
     private javax.swing.JTextField updateSurnameText;
     private javax.swing.JButton userOperationButton;
-    private javax.swing.JPanel windowPanel;
     private javax.swing.ButtonGroup withdrawButonGroup;
     private javax.swing.JButton withdrawButton;
     private javax.swing.JButton withdrawExitButton;
