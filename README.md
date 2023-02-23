@@ -1,8 +1,9 @@
 # Simple Bank App
 In this project, I worte a simple bank application. To use the database, you must add the sql file in the databaseFile to your own database.<br/>
-Introduction of the application.
+Introduction of the application.<br/>
 [![youtube](http://img.youtube.com/vi/gKbP8uBttvc/0.jpg)](http://www.youtube.com/watch?v=gKbP8uBttvc)
-These pictures are taken from the application interface.
+<br/> These pictures are taken from the application interface.
+
 ## Login Page
 ![login](https://user-images.githubusercontent.com/90919011/220742054-f42adf7c-2100-42c8-99b4-6f83e3013da0.png)
 ## Register Page
