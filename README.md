@@ -1,19 +1,23 @@
 # Simple Bank App
 In this project, I worte a simple bank application. To use the database, you must add the sql file in the databaseFile to your own database.<br/>
-These pictures are taken from the application interface.<br/>
+Introduction of the application.
+[![youtube](http://img.youtube.com/vi/gKbP8uBttvc/0.jpg)](http://www.youtube.com/watch?v=gKbP8uBttvc)
+These pictures are taken from the application interface.
 ## Login Page
-![loginPage](https://user-images.githubusercontent.com/90919011/216056986-ff1ba5b3-68aa-4639-9873-0f2a801c06ba.png)
+![login](https://user-images.githubusercontent.com/90919011/220742054-f42adf7c-2100-42c8-99b4-6f83e3013da0.png)
 ## Register Page
-![registerPage](https://user-images.githubusercontent.com/90919011/216057227-9f7f7c9e-1fd5-4c30-a710-2eec5abc73d8.png)
+![register](https://user-images.githubusercontent.com/90919011/220742191-60662ff1-15f6-4fb7-9cb7-25ca6f0ea961.png)
 ## Menu Page
-![menuPage](https://user-images.githubusercontent.com/90919011/216057312-366c16d1-7bfb-417b-b572-46bdee0c1929.png)
+![menu](https://user-images.githubusercontent.com/90919011/220742419-7313a787-c52b-4bb8-b3de-f9ec68f7c3f4.png)
 ## Withdrawal Page
-![withdrawalPage](https://user-images.githubusercontent.com/90919011/216057433-afac64ea-6c84-413f-b5f5-6277b54d0356.png)
+![withdrawal](https://user-images.githubusercontent.com/90919011/220742486-ab7e78f4-3c89-44d6-be97-8a1ed340d609.png)
 ## Deposite Page
-![depositePage](https://user-images.githubusercontent.com/90919011/216061327-21b27d6d-232f-4def-ba9a-d17cc9d9e30c.png)
+![deposite](https://user-images.githubusercontent.com/90919011/220742585-f471efc6-0c22-488f-95a3-f62a5976f6c7.png)
 ## Currency Page
-![currencyPage](https://user-images.githubusercontent.com/90919011/216057655-1140e9d1-a266-4b82-af12-fe86a0e07b40.png)
+![currency](https://user-images.githubusercontent.com/90919011/220742659-38d95b9c-ac62-436f-86dc-375e24f8b376.png)
 ## User Information Update Page
-![updatePage](https://user-images.githubusercontent.com/90919011/216057940-23ac5144-8d4e-4808-b1fc-e1a4f8adc329.png)
+![userInfoUpdate](https://user-images.githubusercontent.com/90919011/220742727-e2361faa-ad1c-444e-bfbd-824642a5befc.png)
+## User Information Page
+![userInfo](https://user-images.githubusercontent.com/90919011/220742803-d9b0bf7f-bc90-4341-9791-3c4717bfa0ca.png)
 ## Transition Page
-![transitionPage](https://user-images.githubusercontent.com/90919011/216058126-1c5f799f-aaed-419d-84a5-02ca4c70fe8f.png)
+![transition](https://user-images.githubusercontent.com/90919011/220742889-2d436932-b6af-4d5e-9748-ec1989a0dc1e.png)

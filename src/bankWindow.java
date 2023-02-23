@@ -182,7 +182,8 @@ public class bankWindow extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         newRegisterButton = new javax.swing.JButton();
         loginPasswordVisible = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        loginB = new javax.swing.JLabel();
         registerPanel = new javax.swing.JPanel();
         registerExitButton = new javax.swing.JButton();
         regsiterNameLabel = new javax.swing.JLabel();
@@ -204,6 +205,7 @@ public class bankWindow extends javax.swing.JFrame {
         registerPasswordVisible = new javax.swing.JCheckBox();
         registerButton = new javax.swing.JButton();
         copyButton = new javax.swing.JButton();
+        registerB = new javax.swing.JLabel();
         menuPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         nameSurnameLabel = new javax.swing.JLabel();
@@ -219,6 +221,7 @@ public class bankWindow extends javax.swing.JFrame {
         userOperationButton = new javax.swing.JButton();
         depositeButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        menuB = new javax.swing.JLabel();
         depositePanel = new javax.swing.JPanel();
         depositeExitButton = new javax.swing.JButton();
         myAccount = new javax.swing.JRadioButton();
@@ -233,6 +236,7 @@ public class bankWindow extends javax.swing.JFrame {
         depAmounthText = new javax.swing.JTextField();
         depIbanText = new javax.swing.JTextField();
         depApproveButton = new javax.swing.JButton();
+        depositeB = new javax.swing.JLabel();
         withdrawPanel = new javax.swing.JPanel();
         withdrawExitButton = new javax.swing.JButton();
         wtTlRadioButton = new javax.swing.JRadioButton();
@@ -243,6 +247,7 @@ public class bankWindow extends javax.swing.JFrame {
         wtAmounthLabel = new javax.swing.JLabel();
         wtAmounthText = new javax.swing.JTextField();
         wtApproveButton = new javax.swing.JButton();
+        withdrawB = new javax.swing.JLabel();
         updatePanel = new javax.swing.JPanel();
         updateExitButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -260,6 +265,7 @@ public class bankWindow extends javax.swing.JFrame {
         updatePasswordText = new javax.swing.JPasswordField();
         updateAgainPasswordText = new javax.swing.JPasswordField();
         changePassword = new javax.swing.JCheckBox();
+        updateB = new javax.swing.JLabel();
         currencyPanel = new javax.swing.JPanel();
         currencyExitButton = new javax.swing.JButton();
         currencyDolarRadioButton = new javax.swing.JRadioButton();
@@ -273,10 +279,12 @@ public class bankWindow extends javax.swing.JFrame {
         currencyTlLabel1 = new javax.swing.JLabel();
         currencyAmounthText = new javax.swing.JTextField();
         currencyApproveButton = new javax.swing.JButton();
+        currencyB = new javax.swing.JLabel();
         transitionPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        transitionB = new javax.swing.JLabel();
         detailPanel = new javax.swing.JPanel();
         detailNameLabel = new javax.swing.JLabel();
         detailIdLabel = new javax.swing.JLabel();
@@ -290,10 +298,10 @@ public class bankWindow extends javax.swing.JFrame {
         detailAllChangeTLLabel = new javax.swing.JLabel();
         detailExitButton = new javax.swing.JButton();
         copyUserInformatin = new javax.swing.JButton();
+        detailB = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(300, 200, 0, 0));
-        setPreferredSize(new java.awt.Dimension(683, 340));
         setResizable(false);
 
         cards.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -302,18 +310,22 @@ public class bankWindow extends javax.swing.JFrame {
         loginPanel.setBackground(new java.awt.Color(9, 6, 26));
         loginPanel.setMaximumSize(new java.awt.Dimension(683, 300));
         loginPanel.setPreferredSize(new java.awt.Dimension(683, 330));
+        loginPanel.setLayout(null);
 
-        idNumberRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         loginPageButtonGroup.add(idNumberRadioButton);
         idNumberRadioButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         idNumberRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         idNumberRadioButton.setText("KİMLİK NUMARSI");
         idNumberRadioButton.setBorder(null);
+        idNumberRadioButton.setFocusPainted(false);
+        idNumberRadioButton.setOpaque(false);
         idNumberRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idNumberRadioButtonActionPerformed(evt);
             }
         });
+        loginPanel.add(idNumberRadioButton);
+        idNumberRadioButton.setBounds(380, 110, 197, 28);
 
         accountNumberRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         loginPageButtonGroup.add(accountNumberRadioButton);
@@ -321,13 +333,20 @@ public class bankWindow extends javax.swing.JFrame {
         accountNumberRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         accountNumberRadioButton.setText("HESAP NUMARASI");
         accountNumberRadioButton.setBorder(null);
+        accountNumberRadioButton.setFocusPainted(false);
+        accountNumberRadioButton.setOpaque(false);
         accountNumberRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accountNumberRadioButtonActionPerformed(evt);
             }
         });
+        loginPanel.add(accountNumberRadioButton);
+        accountNumberRadioButton.setBounds(380, 150, 202, 36);
 
-        loginTextField.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        loginTextField.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        loginTextField.setForeground(new java.awt.Color(255, 255, 255));
+        loginTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(12, 91, 160)));
+        loginTextField.setOpaque(false);
         loginTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginTextFieldMouseClicked(evt);
@@ -336,9 +355,14 @@ public class bankWindow extends javax.swing.JFrame {
                 loginTextFieldMouseEntered(evt);
             }
         });
+        loginPanel.add(loginTextField);
+        loginTextField.setBounds(100, 100, 200, 32);
 
-        loginPasswordField.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        loginPasswordField.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        loginPasswordField.setForeground(new java.awt.Color(255, 255, 255));
         loginPasswordField.setToolTipText("");
+        loginPasswordField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(12, 91, 160)));
+        loginPasswordField.setOpaque(false);
         loginPasswordField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginPasswordFieldMouseClicked(evt);
@@ -347,720 +371,634 @@ public class bankWindow extends javax.swing.JFrame {
                 loginPasswordFieldMouseEntered(evt);
             }
         });
+        loginPanel.add(loginPasswordField);
+        loginPasswordField.setBounds(100, 150, 200, 32);
 
-        loginButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        loginButton.setBackground(new java.awt.Color(255, 255, 255));
+        loginButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("GİRİŞ YAP");
-        loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        loginButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        loginButton.setContentAreaFilled(false);
+        loginButton.setFocusPainted(false);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
             }
         });
+        loginPanel.add(loginButton);
+        loginButton.setBounds(130, 200, 150, 40);
 
-        newRegisterButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        newRegisterButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        newRegisterButton.setForeground(new java.awt.Color(255, 255, 255));
         newRegisterButton.setText("KAYIT OL");
-        newRegisterButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        newRegisterButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(12, 91, 160)));
+        newRegisterButton.setContentAreaFilled(false);
+        newRegisterButton.setFocusPainted(false);
         newRegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newRegisterButtonActionPerformed(evt);
             }
         });
+        loginPanel.add(newRegisterButton);
+        newRegisterButton.setBounds(130, 240, 150, 40);
 
         loginPasswordVisible.setBackground(new java.awt.Color(9, 6, 26));
         loginPasswordVisible.setForeground(new java.awt.Color(153, 0, 0));
+        loginPasswordVisible.setFocusPainted(false);
+        loginPasswordVisible.setOpaque(false);
         loginPasswordVisible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginPasswordVisibleActionPerformed(evt);
             }
         });
+        loginPanel.add(loginPasswordVisible);
+        loginPasswordVisible.setBounds(310, 140, 20, 30);
 
-        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("RASH BANK");
+        title.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 48)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setText("RASH BANK");
+        loginPanel.add(title);
+        title.setBounds(163, 29, 369, 53);
 
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                            .addComponent(loginPasswordField)
-                            .addComponent(newRegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(4, 4, 4)
-                        .addComponent(loginPasswordVisible)
-                        .addGap(50, 50, 50)
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(accountNumberRadioButton)
-                            .addComponent(idNumberRadioButton))))
-                .addContainerGap(97, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151))
-        );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addComponent(idNumberRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(accountNumberRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginPasswordVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(newRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
+        loginB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        loginPanel.add(loginB);
+        loginB.setBounds(0, 0, 683, 360);
 
         cards.add(loginPanel, "loginCard");
 
         registerPanel.setBackground(new java.awt.Color(9, 6, 26));
         registerPanel.setPreferredSize(new java.awt.Dimension(683, 300));
+        registerPanel.setLayout(null);
 
-        registerExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerExitButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registerExitButton.setForeground(new java.awt.Color(255, 255, 255));
         registerExitButton.setText("GERİ");
-        registerExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        registerExitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(12, 91, 160)));
+        registerExitButton.setContentAreaFilled(false);
+        registerExitButton.setFocusPainted(false);
         registerExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerExitButtonActionPerformed(evt);
             }
         });
+        registerPanel.add(registerExitButton);
+        registerExitButton.setBounds(12, 13, 56, 22);
 
         regsiterNameLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         regsiterNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         regsiterNameLabel.setText("Ad : ");
+        registerPanel.add(regsiterNameLabel);
+        regsiterNameLabel.setBounds(120, 63, 35, 18);
 
         registerSurnameLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerSurnameLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerSurnameLabel.setText("Soyad : ");
+        registerPanel.add(registerSurnameLabel);
+        registerSurnameLabel.setBounds(95, 100, 60, 18);
 
         registerIdNumberLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerIdNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerIdNumberLabel.setText("Kimlik Numarası : ");
+        registerPanel.add(registerIdNumberLabel);
+        registerIdNumberLabel.setBounds(29, 136, 126, 18);
 
         registerPasswordLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerPasswordLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerPasswordLabel.setText("Şifre : ");
+        registerPanel.add(registerPasswordLabel);
+        registerPasswordLabel.setBounds(400, 100, 48, 18);
 
         registerPasswordAgainLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerPasswordAgainLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerPasswordAgainLabel.setText("Şifre Tekrar : ");
+        registerPanel.add(registerPasswordAgainLabel);
+        registerPasswordAgainLabel.setBounds(350, 140, 98, 18);
 
         registerEmailLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerEmailLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerEmailLabel.setText("E-posta : ");
+        registerPanel.add(registerEmailLabel);
+        registerEmailLabel.setBounds(370, 60, 72, 18);
 
         registerIbanNumberLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerIbanNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerIbanNumberLabel.setText("İban : ");
+        registerPanel.add(registerIbanNumberLabel);
+        registerIbanNumberLabel.setBounds(401, 170, 47, 24);
 
         registerAccountNumberLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         registerAccountNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         registerAccountNumberLabel.setText("Hesap Numarası : ");
+        registerPanel.add(registerAccountNumberLabel);
+        registerAccountNumberLabel.setBounds(26, 173, 129, 18);
 
         registerNameText.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerNameText.setForeground(new java.awt.Color(255, 255, 255));
+        registerNameText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
+        registerNameText.setOpaque(false);
+        registerPanel.add(registerNameText);
+        registerNameText.setBounds(167, 60, 150, 20);
 
         registerIdNumberText.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerIdNumberText.setForeground(new java.awt.Color(255, 255, 255));
+        registerIdNumberText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
+        registerIdNumberText.setOpaque(false);
+        registerPanel.add(registerIdNumberText);
+        registerIdNumberText.setBounds(167, 133, 150, 20);
 
         registerSurnameText.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerSurnameText.setForeground(new java.awt.Color(255, 255, 255));
+        registerSurnameText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
+        registerSurnameText.setOpaque(false);
+        registerPanel.add(registerSurnameText);
+        registerSurnameText.setBounds(167, 97, 150, 20);
 
         registerEmailText.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerEmailText.setForeground(new java.awt.Color(255, 255, 255));
+        registerEmailText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
+        registerEmailText.setOpaque(false);
+        registerPanel.add(registerEmailText);
+        registerEmailText.setBounds(460, 60, 145, 20);
 
         registerIbanNumberText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registerIbanNumberText.setForeground(new java.awt.Color(255, 255, 255));
+        registerIbanNumberText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
         registerIbanNumberText.setEnabled(false);
+        registerIbanNumberText.setOpaque(false);
+        registerPanel.add(registerIbanNumberText);
+        registerIbanNumberText.setBounds(460, 170, 145, 20);
 
         registerAccountNumberText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registerAccountNumberText.setForeground(new java.awt.Color(255, 255, 255));
+        registerAccountNumberText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
         registerAccountNumberText.setEnabled(false);
+        registerAccountNumberText.setOpaque(false);
+        registerPanel.add(registerAccountNumberText);
+        registerAccountNumberText.setBounds(167, 170, 150, 20);
 
         registerPasswordText.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerPasswordText.setForeground(new java.awt.Color(255, 255, 255));
+        registerPasswordText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
+        registerPasswordText.setOpaque(false);
+        registerPanel.add(registerPasswordText);
+        registerPasswordText.setBounds(460, 100, 145, 20);
 
         registerAgainPasswordText.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerAgainPasswordText.setForeground(new java.awt.Color(255, 255, 255));
+        registerAgainPasswordText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
+        registerAgainPasswordText.setOpaque(false);
+        registerPanel.add(registerAgainPasswordText);
+        registerAgainPasswordText.setBounds(460, 140, 145, 20);
 
         registerPasswordVisible.setBackground(new java.awt.Color(9, 6, 26));
+        registerPasswordVisible.setContentAreaFilled(false);
+        registerPasswordVisible.setFocusPainted(false);
         registerPasswordVisible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerPasswordVisibleActionPerformed(evt);
             }
         });
+        registerPanel.add(registerPasswordVisible);
+        registerPasswordVisible.setBounds(620, 100, 21, 21);
 
-        registerButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        registerButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registerButton.setForeground(new java.awt.Color(255, 255, 255));
         registerButton.setText("HESAP OLUŞTUR");
-        registerButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(151, 8, 8), 4, true));
+        registerButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        registerButton.setContentAreaFilled(false);
         registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        registerButton.setFocusPainted(false);
         registerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
             }
         });
+        registerPanel.add(registerButton);
+        registerButton.setBounds(250, 230, 190, 41);
 
         copyButton.setBackground(new java.awt.Color(9, 6, 26));
         copyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyWhite.png"))); // NOI18N
         copyButton.setBorder(new javax.swing.border.MatteBorder(null));
+        copyButton.setBorderPainted(false);
+        copyButton.setContentAreaFilled(false);
+        copyButton.setFocusPainted(false);
         copyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 copyButtonActionPerformed(evt);
             }
         });
+        registerPanel.add(copyButton);
+        copyButton.setBounds(324, 170, 21, 24);
 
-        javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
-        registerPanel.setLayout(registerPanelLayout);
-        registerPanelLayout.setHorizontalGroup(
-            registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerPanelLayout.createSequentialGroup()
-                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(registerPanelLayout.createSequentialGroup()
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registerPanelLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(registerSurnameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(regsiterNameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(registerIdNumberLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(registerAccountNumberLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registerIdNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerAccountNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addComponent(copyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPanelLayout.createSequentialGroup()
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(registerPanelLayout.createSequentialGroup()
-                                        .addComponent(registerEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(7, 7, 7))
-                                    .addGroup(registerPanelLayout.createSequentialGroup()
-                                        .addComponent(registerIbanNumberLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(registerIbanNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(registerEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPanelLayout.createSequentialGroup()
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(registerPasswordLabel)
-                                    .addComponent(registerPasswordAgainLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(registerPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(registerAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(15, 15, 15)
-                        .addComponent(registerPasswordVisible))
-                    .addGroup(registerPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registerExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        registerPanelLayout.setVerticalGroup(
-            registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(registerExitButton)
-                .addGap(18, 18, 18)
-                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(registerPanelLayout.createSequentialGroup()
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registerNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(regsiterNameLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registerSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerSurnameLabel))
-                        .addGap(12, 12, 12)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registerIdNumberLabel)
-                            .addComponent(registerIdNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registerAccountNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerAccountNumberLabel)))
-                    .addGroup(registerPanelLayout.createSequentialGroup()
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registerPanelLayout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registerPasswordAgainLabel)
-                                    .addComponent(registerAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(registerPasswordVisible)
-                            .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(registerPasswordLabel)
-                                .addComponent(registerPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registerEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerEmailLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(copyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(registerIbanNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(registerIbanNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(38, 38, 38)
-                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
+        registerB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        registerPanel.add(registerB);
+        registerB.setBounds(0, 0, 690, 360);
 
         cards.add(registerPanel, "registerCard");
 
         menuPanel.setBackground(new java.awt.Color(9, 6, 26));
+        menuPanel.setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 5));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 5, new java.awt.Color(102, 0, 102)));
         jPanel1.setPreferredSize(new java.awt.Dimension(610, 131));
+        jPanel1.setLayout(null);
 
         nameSurnameLabel.setBackground(new java.awt.Color(255, 255, 255));
         nameSurnameLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        nameSurnameLabel.setForeground(new java.awt.Color(255, 255, 255));
         nameSurnameLabel.setText("nameSurnameLabel");
+        nameSurnameLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        jPanel1.add(nameSurnameLabel);
+        nameSurnameLabel.setBounds(12, 13, 246, 27);
 
         ibanLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        ibanLabel.setForeground(new java.awt.Color(255, 255, 255));
         ibanLabel.setText("ibanLabel");
+        ibanLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        jPanel1.add(ibanLabel);
+        ibanLabel.setBounds(12, 47, 246, 27);
 
         accounNumberLabel.setBackground(new java.awt.Color(255, 255, 255));
         accounNumberLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        accounNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         accounNumberLabel.setText("accountNumberLabel");
+        accounNumberLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        jPanel1.add(accounNumberLabel);
+        accounNumberLabel.setBounds(12, 81, 246, 27);
 
         ibanCopyButton.setBackground(new java.awt.Color(102, 102, 102));
         ibanCopyButton.setForeground(new java.awt.Color(102, 102, 102));
         ibanCopyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyBlack.png"))); // NOI18N
         ibanCopyButton.setBorder(null);
+        ibanCopyButton.setBorderPainted(false);
+        ibanCopyButton.setContentAreaFilled(false);
+        ibanCopyButton.setFocusPainted(false);
         ibanCopyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ibanCopyButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(ibanCopyButton);
+        ibanCopyButton.setBounds(263, 47, 26, 16);
 
         accounNumberCopyButton.setBackground(new java.awt.Color(102, 102, 102));
         accounNumberCopyButton.setForeground(new java.awt.Color(102, 102, 102));
         accounNumberCopyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/copyBlack.png"))); // NOI18N
         accounNumberCopyButton.setBorder(null);
+        accounNumberCopyButton.setBorderPainted(false);
+        accounNumberCopyButton.setContentAreaFilled(false);
+        accounNumberCopyButton.setFocusPainted(false);
         accounNumberCopyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accounNumberCopyButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(accounNumberCopyButton);
+        accounNumberCopyButton.setBounds(263, 81, 26, 16);
 
         balanceLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        balanceLabel.setForeground(new java.awt.Color(255, 255, 255));
         balanceLabel.setText("balanceLabel");
+        balanceLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        jPanel1.add(balanceLabel);
+        balanceLabel.setBounds(330, 10, 200, 30);
 
         detailButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         detailButton.setText("DETAY");
-        detailButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(102, 0, 0)));
+        detailButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailButton.setContentAreaFilled(false);
+        detailButton.setFocusPainted(false);
         detailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 detailButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(detailButton);
+        detailButton.setBounds(389, 69, 68, 29);
 
         refreshButton.setBackground(new java.awt.Color(102, 102, 102));
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refresh.png"))); // NOI18N
+        refreshButton.setBorderPainted(false);
+        refreshButton.setContentAreaFilled(false);
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(refreshButton);
+        refreshButton.setBounds(540, 10, 57, 41);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nameSurnameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ibanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(accounNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(accounNumberCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100)
-                        .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ibanCopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(balanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(refreshButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nameSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ibanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ibanCopyButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(accounNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(accounNumberCopyButton)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(balanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        menuPanel.add(jPanel1);
+        jPanel1.setBounds(23, 22, 610, 131);
 
-        withdrawButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        withdrawButton.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        withdrawButton.setForeground(new java.awt.Color(255, 255, 255));
         withdrawButton.setText("PARA ÇEKME");
-        withdrawButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
+        withdrawButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        withdrawButton.setContentAreaFilled(false);
+        withdrawButton.setFocusPainted(false);
         withdrawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 withdrawButtonActionPerformed(evt);
             }
         });
+        menuPanel.add(withdrawButton);
+        withdrawButton.setBounds(23, 166, 160, 52);
 
-        currencyTransactionsButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        currencyTransactionsButton.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        currencyTransactionsButton.setForeground(new java.awt.Color(255, 255, 255));
         currencyTransactionsButton.setText("DÖVİZ İŞLEMLERİ");
-        currencyTransactionsButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
+        currencyTransactionsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        currencyTransactionsButton.setContentAreaFilled(false);
+        currencyTransactionsButton.setFocusPainted(false);
         currencyTransactionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyTransactionsButtonActionPerformed(evt);
             }
         });
+        menuPanel.add(currencyTransactionsButton);
+        currencyTransactionsButton.setBounds(473, 166, 164, 52);
 
-        userOperationButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        userOperationButton.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        userOperationButton.setForeground(new java.awt.Color(255, 255, 255));
         userOperationButton.setText("KULLANICI İŞLEMLERİ");
-        userOperationButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
+        userOperationButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        userOperationButton.setContentAreaFilled(false);
+        userOperationButton.setFocusPainted(false);
         userOperationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userOperationButtonActionPerformed(evt);
             }
         });
+        menuPanel.add(userOperationButton);
+        userOperationButton.setBounds(114, 236, 210, 52);
 
-        depositeButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        depositeButton.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        depositeButton.setForeground(new java.awt.Color(255, 255, 255));
         depositeButton.setText("PARA YATIRMA/GÖNDERME");
-        depositeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
+        depositeButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        depositeButton.setContentAreaFilled(false);
+        depositeButton.setFocusPainted(false);
         depositeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositeButtonActionPerformed(evt);
             }
         });
+        menuPanel.add(depositeButton);
+        depositeButton.setBounds(195, 166, 260, 52);
 
-        logoutButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        logoutButton.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("ÇIKIŞ");
-        logoutButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(151, 8, 8), new java.awt.Color(0, 0, 0)));
+        logoutButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        logoutButton.setContentAreaFilled(false);
+        logoutButton.setFocusPainted(false);
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutButtonActionPerformed(evt);
             }
         });
+        menuPanel.add(logoutButton);
+        logoutButton.setBounds(370, 230, 170, 60);
 
-        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
-        menuPanel.setLayout(menuPanelLayout);
-        menuPanelLayout.setHorizontalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(userOperationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(menuPanelLayout.createSequentialGroup()
-                                .addComponent(withdrawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(depositeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(currencyTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        menuPanelLayout.setVerticalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(withdrawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(currencyTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(depositeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userOperationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
+        menuB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        menuPanel.add(menuB);
+        menuB.setBounds(0, 0, 690, 360);
 
         cards.add(menuPanel, "menuCard");
 
         depositePanel.setBackground(new java.awt.Color(9, 6, 26));
         depositePanel.setPreferredSize(new java.awt.Dimension(683, 360));
+        depositePanel.setLayout(null);
 
-        depositeExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        depositeExitButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        depositeExitButton.setForeground(new java.awt.Color(255, 255, 255));
         depositeExitButton.setText("GERİ");
-        depositeExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        depositeExitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(12, 91, 160)));
+        depositeExitButton.setContentAreaFilled(false);
+        depositeExitButton.setFocusPainted(false);
         depositeExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositeExitButtonActionPerformed(evt);
             }
         });
+        depositePanel.add(depositeExitButton);
+        depositeExitButton.setBounds(12, 13, 56, 22);
 
         myAccount.setBackground(new java.awt.Color(9, 6, 26));
         depButtonGroup1.add(myAccount);
         myAccount.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         myAccount.setForeground(new java.awt.Color(255, 255, 255));
         myAccount.setText("KENDİ HESABIMA");
+        myAccount.setContentAreaFilled(false);
+        myAccount.setFocusable(false);
         myAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 myAccountActionPerformed(evt);
             }
         });
+        depositePanel.add(myAccount);
+        myAccount.setBounds(50, 53, 167, 27);
 
         anotherAccount.setBackground(new java.awt.Color(9, 6, 26));
         depButtonGroup1.add(anotherAccount);
         anotherAccount.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         anotherAccount.setForeground(new java.awt.Color(255, 255, 255));
         anotherAccount.setText("BAŞKA HESABA");
+        anotherAccount.setContentAreaFilled(false);
+        anotherAccount.setFocusable(false);
         anotherAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anotherAccountActionPerformed(evt);
             }
         });
+        depositePanel.add(anotherAccount);
+        anotherAccount.setBounds(235, 53, 149, 27);
 
-        depOpPanel.setBackground(new java.awt.Color(102, 102, 102));
-        depOpPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 5));
+        depOpPanel.setBackground(new java.awt.Color(204, 204, 204));
+        depOpPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 5, new java.awt.Color(102, 0, 102)));
+        depOpPanel.setFocusable(false);
+        depOpPanel.setLayout(null);
 
         depBalanceLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        depBalanceLabel.setForeground(new java.awt.Color(255, 255, 255));
         depBalanceLabel.setText("depBalance");
+        depBalanceLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        depBalanceLabel.setFocusable(false);
+        depOpPanel.add(depBalanceLabel);
+        depBalanceLabel.setBounds(29, 59, 184, 27);
 
         depTlButton.setBackground(new java.awt.Color(102, 102, 102));
         depButtonGroup2.add(depTlButton);
         depTlButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        depTlButton.setForeground(new java.awt.Color(255, 255, 255));
         depTlButton.setText("TL");
+        depTlButton.setContentAreaFilled(false);
+        depTlButton.setFocusPainted(false);
+        depTlButton.setFocusable(false);
         depTlButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depTlButtonActionPerformed(evt);
             }
         });
+        depOpPanel.add(depTlButton);
+        depTlButton.setBounds(29, 14, 44, 26);
 
         depDolarButton.setBackground(new java.awt.Color(102, 102, 102));
         depButtonGroup2.add(depDolarButton);
         depDolarButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        depDolarButton.setForeground(new java.awt.Color(255, 255, 255));
         depDolarButton.setText("DOLAR");
+        depDolarButton.setContentAreaFilled(false);
+        depDolarButton.setFocusPainted(false);
+        depDolarButton.setFocusable(false);
         depDolarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depDolarButtonActionPerformed(evt);
             }
         });
+        depOpPanel.add(depDolarButton);
+        depDolarButton.setBounds(92, 14, 79, 26);
 
         depEuroButton.setBackground(new java.awt.Color(102, 102, 102));
         depButtonGroup2.add(depEuroButton);
         depEuroButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        depEuroButton.setForeground(new java.awt.Color(255, 255, 255));
         depEuroButton.setText("EURO");
+        depEuroButton.setContentAreaFilled(false);
+        depEuroButton.setFocusPainted(false);
+        depEuroButton.setFocusable(false);
         depEuroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depEuroButtonActionPerformed(evt);
             }
         });
+        depOpPanel.add(depEuroButton);
+        depEuroButton.setBounds(189, 14, 69, 26);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("TUTAR :");
+        jLabel3.setFocusable(false);
+        depOpPanel.add(jLabel3);
+        jLabel3.setBounds(231, 59, 70, 27);
 
         depIbanLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        depIbanLabel.setForeground(new java.awt.Color(255, 255, 255));
         depIbanLabel.setText("İBAN :");
+        depIbanLabel.setFocusable(false);
+        depOpPanel.add(depIbanLabel);
+        depIbanLabel.setBounds(244, 103, 57, 27);
 
         depAmounthText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        depAmounthText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        depAmounthText.setOpaque(false);
+        depOpPanel.add(depAmounthText);
+        depAmounthText.setBounds(306, 59, 217, 27);
 
         depIbanText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        depIbanText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        depIbanText.setOpaque(false);
+        depOpPanel.add(depIbanText);
+        depIbanText.setBounds(306, 103, 217, 27);
 
         depApproveButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         depApproveButton.setText("ONAYLA");
-        depApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        depApproveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        depApproveButton.setContentAreaFilled(false);
+        depApproveButton.setFocusPainted(false);
+        depApproveButton.setFocusable(false);
         depApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depApproveButtonActionPerformed(evt);
             }
         });
+        depOpPanel.add(depApproveButton);
+        depApproveButton.setBounds(81, 99, 98, 39);
 
-        javax.swing.GroupLayout depOpPanelLayout = new javax.swing.GroupLayout(depOpPanel);
-        depOpPanel.setLayout(depOpPanelLayout);
-        depOpPanelLayout.setHorizontalGroup(
-            depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(depOpPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, depOpPanelLayout.createSequentialGroup()
-                        .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(depOpPanelLayout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(depApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(depBalanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(depIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(depAmounthText, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(depIbanText))
-                        .addGap(39, 39, 39))
-                    .addGroup(depOpPanelLayout.createSequentialGroup()
-                        .addComponent(depTlButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(depDolarButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(depEuroButton)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        depOpPanelLayout.setVerticalGroup(
-            depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(depOpPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(depTlButton)
-                    .addComponent(depDolarButton)
-                    .addComponent(depEuroButton))
-                .addGap(18, 18, 18)
-                .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(depAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(depBalanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(depOpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(depIbanText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(depIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(depApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        depositePanel.add(depOpPanel);
+        depOpPanel.setBounds(49, 97, 560, 180);
 
-        javax.swing.GroupLayout depositePanelLayout = new javax.swing.GroupLayout(depositePanel);
-        depositePanel.setLayout(depositePanelLayout);
-        depositePanelLayout.setHorizontalGroup(
-            depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(depositePanelLayout.createSequentialGroup()
-                .addGroup(depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(depositePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(depositeExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(depositePanelLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(depOpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(depositePanelLayout.createSequentialGroup()
-                                .addComponent(myAccount)
-                                .addGap(18, 18, 18)
-                                .addComponent(anotherAccount)))))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        depositePanelLayout.setVerticalGroup(
-            depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(depositePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(depositeExitButton)
-                .addGap(18, 18, 18)
-                .addGroup(depositePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(myAccount)
-                    .addComponent(anotherAccount))
-                .addGap(18, 18, 18)
-                .addComponent(depOpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
+        depositeB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        depositePanel.add(depositeB);
+        depositeB.setBounds(0, 0, 690, 360);
 
         cards.add(depositePanel, "depositeCard");
 
         withdrawPanel.setBackground(new java.awt.Color(9, 6, 26));
+        withdrawPanel.setLayout(null);
 
-        withdrawExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        withdrawExitButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        withdrawExitButton.setForeground(new java.awt.Color(255, 255, 255));
         withdrawExitButton.setText("GERİ");
-        withdrawExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        withdrawExitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(12, 91, 160)));
+        withdrawExitButton.setContentAreaFilled(false);
+        withdrawExitButton.setFocusPainted(false);
         withdrawExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 withdrawExitButtonActionPerformed(evt);
             }
         });
+        withdrawPanel.add(withdrawExitButton);
+        withdrawExitButton.setBounds(12, 13, 56, 22);
 
         wtTlRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         withdrawButonGroup.add(wtTlRadioButton);
         wtTlRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtTlRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         wtTlRadioButton.setText("TL");
+        wtTlRadioButton.setContentAreaFilled(false);
+        wtTlRadioButton.setFocusPainted(false);
         wtTlRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wtTlRadioButtonActionPerformed(evt);
             }
         });
+        withdrawPanel.add(wtTlRadioButton);
+        wtTlRadioButton.setBounds(33, 74, 44, 26);
 
         wtDolarRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         withdrawButonGroup.add(wtDolarRadioButton);
         wtDolarRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtDolarRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         wtDolarRadioButton.setText("DOLAR");
+        wtDolarRadioButton.setContentAreaFilled(false);
+        wtDolarRadioButton.setFocusPainted(false);
         wtDolarRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wtDolarRadioButtonActionPerformed(evt);
             }
         });
+        withdrawPanel.add(wtDolarRadioButton);
+        wtDolarRadioButton.setBounds(33, 143, 79, 26);
 
         wtEuroRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         withdrawButonGroup.add(wtEuroRadioButton);
         wtEuroRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtEuroRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         wtEuroRadioButton.setText("EURO");
+        wtEuroRadioButton.setContentAreaFilled(false);
+        wtEuroRadioButton.setFocusPainted(false);
         wtEuroRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wtEuroRadioButtonActionPerformed(evt);
             }
         });
+        withdrawPanel.add(wtEuroRadioButton);
+        wtEuroRadioButton.setBounds(33, 213, 69, 26);
 
-        wtOPanel.setBackground(new java.awt.Color(102, 102, 102));
-        wtOPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        wtOPanel.setBackground(new java.awt.Color(204, 204, 204));
+        wtOPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 5, new java.awt.Color(102, 0, 102)));
 
         wtBalanceLabel.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        wtBalanceLabel.setForeground(new java.awt.Color(255, 255, 255));
         wtBalanceLabel.setText("withdrawBalance");
+        wtBalanceLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
 
         wtAmounthLabel.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        wtAmounthLabel.setForeground(new java.awt.Color(255, 255, 255));
         wtAmounthLabel.setText("TUTAR :");
 
         wtAmounthText.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        wtAmounthText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        wtAmounthText.setOpaque(false);
 
         wtApproveButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         wtApproveButton.setText("ONAYLA");
-        wtApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        wtApproveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        wtApproveButton.setContentAreaFilled(false);
+        wtApproveButton.setFocusPainted(false);
         wtApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wtApproveButtonActionPerformed(evt);
@@ -1074,579 +1012,432 @@ public class bankWindow extends javax.swing.JFrame {
             .addGroup(wtOPanelLayout.createSequentialGroup()
                 .addGroup(wtOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(wtOPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(wtBalanceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(117, 117, 117)
+                        .addComponent(wtApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(wtOPanelLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(wtAmounthLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(wtOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(wtOPanelLayout.createSequentialGroup()
-                                .addGap(117, 117, 117)
-                                .addComponent(wtApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(wtOPanelLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(wtAmounthLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(wtAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 47, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(wtBalanceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(wtAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         wtOPanelLayout.setVerticalGroup(
             wtOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wtOPanelLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(36, 36, 36)
                 .addComponent(wtBalanceLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(wtOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(wtAmounthLabel)
                     .addComponent(wtAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(wtApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout withdrawPanelLayout = new javax.swing.GroupLayout(withdrawPanel);
-        withdrawPanel.setLayout(withdrawPanelLayout);
-        withdrawPanelLayout.setHorizontalGroup(
-            withdrawPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(withdrawPanelLayout.createSequentialGroup()
-                .addGroup(withdrawPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(withdrawPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(withdrawExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(withdrawPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(withdrawPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(wtDolarRadioButton)
-                            .addComponent(wtTlRadioButton)
-                            .addComponent(wtEuroRadioButton))
-                        .addGap(63, 63, 63)
-                        .addComponent(wtOPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        withdrawPanelLayout.setVerticalGroup(
-            withdrawPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(withdrawPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(withdrawExitButton)
-                .addGap(32, 32, 32)
-                .addGroup(withdrawPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(withdrawPanelLayout.createSequentialGroup()
-                        .addComponent(wtTlRadioButton)
-                        .addGap(42, 42, 42)
-                        .addComponent(wtDolarRadioButton)
-                        .addGap(43, 43, 43)
-                        .addComponent(wtEuroRadioButton))
-                    .addComponent(wtOPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
+        withdrawPanel.add(wtOPanel);
+        wtOPanel.setBounds(175, 74, 455, 183);
+
+        withdrawB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        withdrawPanel.add(withdrawB);
+        withdrawB.setBounds(0, 0, 690, 340);
 
         cards.add(withdrawPanel, "withdrawCard");
 
         updatePanel.setBackground(new java.awt.Color(9, 6, 26));
+        updatePanel.setLayout(null);
 
-        updateExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        updateExitButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        updateExitButton.setForeground(new java.awt.Color(255, 255, 255));
         updateExitButton.setText("GERİ");
-        updateExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        updateExitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(12, 91, 160)));
+        updateExitButton.setContentAreaFilled(false);
+        updateExitButton.setFocusPainted(false);
         updateExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateExitButtonActionPerformed(evt);
             }
         });
+        updatePanel.add(updateExitButton);
+        updateExitButton.setBounds(12, 13, 56, 22);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("AD :");
+        updatePanel.add(jLabel2);
+        jLabel2.setBounds(68, 93, 33, 24);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("SOYAD :");
+        updatePanel.add(jLabel4);
+        jLabel4.setBounds(36, 130, 65, 26);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("E-POSTA :");
+        updatePanel.add(jLabel5);
+        jLabel5.setBounds(20, 177, 81, 24);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("YENİ ŞİFRE :");
+        updatePanel.add(jLabel6);
+        jLabel6.setBounds(322, 135, 103, 24);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("ŞİFRE TEKRAR :");
+        updatePanel.add(jLabel7);
+        jLabel7.setBounds(297, 177, 128, 25);
 
         updateNameText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        updateNameText.setForeground(new java.awt.Color(255, 255, 255));
+        updateNameText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(102, 0, 102)));
+        updateNameText.setOpaque(false);
+        updatePanel.add(updateNameText);
+        updateNameText.setBounds(106, 93, 191, 21);
 
         updateSurnameText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        updateSurnameText.setForeground(new java.awt.Color(255, 255, 255));
+        updateSurnameText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(102, 0, 102)));
+        updateSurnameText.setOpaque(false);
+        updatePanel.add(updateSurnameText);
+        updateSurnameText.setBounds(106, 130, 191, 21);
 
         updateEmailText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        updateEmailText.setForeground(new java.awt.Color(255, 255, 255));
+        updateEmailText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(102, 0, 102)));
+        updateEmailText.setOpaque(false);
+        updatePanel.add(updateEmailText);
+        updateEmailText.setBounds(106, 177, 191, 21);
 
         updatePasswordVisibleBox.setBackground(new java.awt.Color(9, 6, 26));
+        updatePasswordVisibleBox.setOpaque(false);
         updatePasswordVisibleBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatePasswordVisibleBoxActionPerformed(evt);
             }
         });
+        updatePanel.add(updatePasswordVisibleBox);
+        updatePasswordVisibleBox.setBounds(621, 93, 21, 24);
 
-        updateExitButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        updateExitButton1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        updateExitButton1.setForeground(new java.awt.Color(255, 255, 255));
         updateExitButton1.setText("KAYDET");
-        updateExitButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        updateExitButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        updateExitButton1.setContentAreaFilled(false);
+        updateExitButton1.setFocusPainted(false);
         updateExitButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateExitButton1ActionPerformed(evt);
             }
         });
+        updatePanel.add(updateExitButton1);
+        updateExitButton1.setBounds(268, 220, 147, 49);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ESKİ ŞİFRE :");
+        updatePanel.add(jLabel8);
+        jLabel8.setBounds(322, 93, 103, 24);
 
         oldPasswordText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        oldPasswordText.setForeground(new java.awt.Color(255, 255, 255));
+        oldPasswordText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(102, 0, 102)));
+        oldPasswordText.setOpaque(false);
+        updatePanel.add(oldPasswordText);
+        oldPasswordText.setBounds(430, 93, 190, 21);
 
         updatePasswordText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        updatePasswordText.setForeground(new java.awt.Color(255, 255, 255));
+        updatePasswordText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(102, 0, 102)));
+        updatePasswordText.setOpaque(false);
+        updatePanel.add(updatePasswordText);
+        updatePasswordText.setBounds(430, 135, 190, 21);
 
         updateAgainPasswordText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        updateAgainPasswordText.setForeground(new java.awt.Color(255, 255, 255));
+        updateAgainPasswordText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(102, 0, 102)));
+        updateAgainPasswordText.setOpaque(false);
+        updatePanel.add(updateAgainPasswordText);
+        updateAgainPasswordText.setBounds(430, 177, 190, 21);
 
         changePassword.setBackground(new java.awt.Color(9, 6, 26));
         changePassword.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         changePassword.setForeground(new java.awt.Color(255, 255, 255));
         changePassword.setText("ŞİFREYİ DEĞİŞTİR");
+        changePassword.setFocusPainted(false);
+        changePassword.setOpaque(false);
+        updatePanel.add(changePassword);
+        changePassword.setBounds(430, 48, 190, 26);
 
-        javax.swing.GroupLayout updatePanelLayout = new javax.swing.GroupLayout(updatePanel);
-        updatePanel.setLayout(updatePanelLayout);
-        updatePanelLayout.setHorizontalGroup(
-            updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(updatePanelLayout.createSequentialGroup()
-                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(updatePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(updateExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(updatePanelLayout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(updateExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(updatePanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(updatePanelLayout.createSequentialGroup()
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(updatePasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(updatePanelLayout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(changePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(oldPasswordText, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                                .addGap(1, 1, 1)
-                                .addComponent(updatePasswordVisibleBox)))))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-        updatePanelLayout.setVerticalGroup(
-            updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(updatePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(updateExitButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(changePassword)
-                .addGap(18, 18, 18)
-                .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, updatePanelLayout.createSequentialGroup()
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(updateNameText)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateSurnameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(updateEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, updatePanelLayout.createSequentialGroup()
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updatePasswordVisibleBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(oldPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updatePasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(updatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateAgainPasswordText, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(updateExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
-        );
+        updateB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        updatePanel.add(updateB);
+        updateB.setBounds(0, -4, 683, 350);
 
         cards.add(updatePanel, "updateCard");
 
         currencyPanel.setBackground(new java.awt.Color(9, 6, 26));
+        currencyPanel.setLayout(null);
 
-        currencyExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        currencyExitButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        currencyExitButton.setForeground(new java.awt.Color(255, 255, 255));
         currencyExitButton.setText("GERİ");
-        currencyExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        currencyExitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(12, 91, 160)));
+        currencyExitButton.setContentAreaFilled(false);
+        currencyExitButton.setFocusPainted(false);
         currencyExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyExitButtonActionPerformed(evt);
             }
         });
+        currencyPanel.add(currencyExitButton);
+        currencyExitButton.setBounds(12, 13, 56, 22);
 
         currencyDolarRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         currencyButtonGroup1.add(currencyDolarRadioButton);
         currencyDolarRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         currencyDolarRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         currencyDolarRadioButton.setText("DOLAR");
+        currencyDolarRadioButton.setContentAreaFilled(false);
+        currencyDolarRadioButton.setFocusPainted(false);
         currencyDolarRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyDolarRadioButtonActionPerformed(evt);
             }
         });
+        currencyPanel.add(currencyDolarRadioButton);
+        currencyDolarRadioButton.setBounds(35, 114, 79, 26);
 
         currencyEuroRadioButton.setBackground(new java.awt.Color(9, 6, 26));
         currencyButtonGroup1.add(currencyEuroRadioButton);
         currencyEuroRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         currencyEuroRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         currencyEuroRadioButton.setText("EURO");
+        currencyEuroRadioButton.setContentAreaFilled(false);
+        currencyEuroRadioButton.setFocusPainted(false);
         currencyEuroRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyEuroRadioButtonActionPerformed(evt);
             }
         });
+        currencyPanel.add(currencyEuroRadioButton);
+        currencyEuroRadioButton.setBounds(35, 173, 69, 26);
 
-        currencyOp.setBackground(new java.awt.Color(102, 102, 102));
-        currencyOp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 5));
+        currencyOp.setBackground(new java.awt.Color(204, 204, 204));
+        currencyOp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 5, new java.awt.Color(102, 0, 102)));
+        currencyOp.setLayout(null);
 
         buyRadioButton.setBackground(new java.awt.Color(102, 102, 102));
         currencyButtonGroup2.add(buyRadioButton);
         buyRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        buyRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         buyRadioButton.setText("AL");
+        buyRadioButton.setContentAreaFilled(false);
+        buyRadioButton.setFocusPainted(false);
+        currencyOp.add(buyRadioButton);
+        buyRadioButton.setBounds(29, 27, 45, 26);
 
         sellRadioButton.setBackground(new java.awt.Color(102, 102, 102));
         currencyButtonGroup2.add(sellRadioButton);
         sellRadioButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        sellRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         sellRadioButton.setText("SAT");
+        sellRadioButton.setContentAreaFilled(false);
+        sellRadioButton.setFocusPainted(false);
+        currencyOp.add(sellRadioButton);
+        sellRadioButton.setBounds(92, 27, 56, 26);
 
         sellBuyLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        sellBuyLabel.setForeground(new java.awt.Color(255, 255, 255));
         sellBuyLabel.setText("jLabel2");
-        sellBuyLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        sellBuyLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        currencyOp.add(sellBuyLabel);
+        sellBuyLabel.setBounds(181, 27, 231, 27);
 
         currencyLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        currencyLabel.setForeground(new java.awt.Color(255, 255, 255));
         currencyLabel.setText("currencyLabel");
-        currencyLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        currencyLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        currencyOp.add(currencyLabel);
+        currencyLabel.setBounds(266, 67, 146, 27);
 
         currencyTlLabel.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        currencyTlLabel.setForeground(new java.awt.Color(255, 255, 255));
         currencyTlLabel.setText("currencyTlLabel");
-        currencyTlLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        currencyTlLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        currencyOp.add(currencyTlLabel);
+        currencyTlLabel.setBounds(29, 67, 156, 27);
 
         currencyTlLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        currencyTlLabel1.setForeground(new java.awt.Color(255, 255, 255));
         currencyTlLabel1.setText("TUTAR : ");
+        currencyOp.add(currencyTlLabel1);
+        currencyTlLabel1.setBounds(29, 107, 69, 27);
 
         currencyAmounthText.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         currencyAmounthText.setText("0");
+        currencyAmounthText.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(102, 0, 102)));
+        currencyAmounthText.setOpaque(false);
+        currencyOp.add(currencyAmounthText);
+        currencyAmounthText.setBounds(103, 107, 309, 27);
 
         currencyApproveButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         currencyApproveButton.setText("ONAYLA");
-        currencyApproveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        currencyApproveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, new java.awt.Color(12, 91, 160)));
+        currencyApproveButton.setContentAreaFilled(false);
+        currencyApproveButton.setFocusPainted(false);
         currencyApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currencyApproveButtonActionPerformed(evt);
             }
         });
+        currencyOp.add(currencyApproveButton);
+        currencyApproveButton.setBounds(187, 147, 103, 39);
 
-        javax.swing.GroupLayout currencyOpLayout = new javax.swing.GroupLayout(currencyOp);
-        currencyOp.setLayout(currencyOpLayout);
-        currencyOpLayout.setHorizontalGroup(
-            currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(currencyOpLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, currencyOpLayout.createSequentialGroup()
-                        .addComponent(currencyTlLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(currencyAmounthText))
-                    .addGroup(currencyOpLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(currencyTlLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(currencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(currencyOpLayout.createSequentialGroup()
-                        .addComponent(buyRadioButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(sellRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sellBuyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(44, 44, 44))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, currencyOpLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(currencyApproveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(166, 166, 166))
-        );
-        currencyOpLayout.setVerticalGroup(
-            currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(currencyOpLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buyRadioButton)
-                    .addComponent(sellRadioButton)
-                    .addComponent(sellBuyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(currencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(currencyTlLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(currencyOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(currencyTlLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(currencyAmounthText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(currencyApproveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
-        );
+        currencyPanel.add(currencyOp);
+        currencyOp.setBounds(132, 60, 460, 210);
 
-        javax.swing.GroupLayout currencyPanelLayout = new javax.swing.GroupLayout(currencyPanel);
-        currencyPanel.setLayout(currencyPanelLayout);
-        currencyPanelLayout.setHorizontalGroup(
-            currencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(currencyPanelLayout.createSequentialGroup()
-                .addGroup(currencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(currencyPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(currencyExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(currencyPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(currencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(currencyEuroRadioButton)
-                            .addComponent(currencyDolarRadioButton))
-                        .addGap(18, 18, 18)
-                        .addComponent(currencyOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-        currencyPanelLayout.setVerticalGroup(
-            currencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(currencyPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(currencyExitButton)
-                .addGroup(currencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(currencyPanelLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(currencyDolarRadioButton)
-                        .addGap(32, 32, 32)
-                        .addComponent(currencyEuroRadioButton))
-                    .addGroup(currencyPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(currencyOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
-        );
+        currencyB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        currencyPanel.add(currencyB);
+        currencyB.setBounds(0, 0, 683, 340);
 
         cards.add(currencyPanel, "currencyCard");
 
         transitionPanel.setBackground(new java.awt.Color(9, 6, 26));
+        transitionPanel.setLayout(null);
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 70)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("RA");
+        transitionPanel.add(jLabel10);
+        jLabel10.setBounds(162, 112, 118, 89);
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/thunderW.png"))); // NOI18N
+        transitionPanel.add(jLabel11);
+        jLabel11.setBounds(287, 83, 115, 148);
 
         jLabel12.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 70)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("H");
+        transitionPanel.add(jLabel12);
+        jLabel12.setBounds(409, 83, 88, 148);
 
-        javax.swing.GroupLayout transitionPanelLayout = new javax.swing.GroupLayout(transitionPanel);
-        transitionPanel.setLayout(transitionPanelLayout);
-        transitionPanelLayout.setHorizontalGroup(
-            transitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transitionPanelLayout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
-        );
-        transitionPanelLayout.setVerticalGroup(
-            transitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transitionPanelLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(transitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(transitionPanelLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
+        transitionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        transitionPanel.add(transitionB);
+        transitionB.setBounds(0, 0, 690, 340);
 
         cards.add(transitionPanel, "transitionCard");
 
         detailPanel.setBackground(new java.awt.Color(9, 6, 26));
         detailPanel.setPreferredSize(new java.awt.Dimension(683, 360));
+        detailPanel.setLayout(null);
 
         detailNameLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailNameLabel.setText("detailName");
-        detailNameLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailNameLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailNameLabel);
+        detailNameLabel.setBounds(47, 48, 260, 30);
 
         detailIdLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailIdLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailIdLabel.setText("detailId");
-        detailIdLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailIdLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailIdLabel);
+        detailIdLabel.setBounds(47, 85, 260, 30);
 
         detailIbanLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailIbanLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailIbanLabel.setText("detailIban");
-        detailIbanLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailIbanLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailIbanLabel);
+        detailIbanLabel.setBounds(47, 122, 260, 30);
 
         detailAccountNumberLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailAccountNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailAccountNumberLabel.setText("detailAccountNumber");
-        detailAccountNumberLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailAccountNumberLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailAccountNumberLabel);
+        detailAccountNumberLabel.setBounds(47, 159, 260, 30);
 
         detailEmailLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailEmailLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailEmailLabel.setText("detailEMail");
-        detailEmailLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailEmailLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailEmailLabel);
+        detailEmailLabel.setBounds(47, 196, 260, 30);
 
         detailSurnameLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailSurnameLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailSurnameLabel.setText("detailSurname");
-        detailSurnameLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailSurnameLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailSurnameLabel);
+        detailSurnameLabel.setBounds(335, 48, 260, 30);
 
         detailTLLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailTLLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailTLLabel.setText("detailTL");
-        detailTLLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailTLLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailTLLabel);
+        detailTLLabel.setBounds(335, 85, 260, 30);
 
         detailDolarLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailDolarLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailDolarLabel.setText("detailDolar");
-        detailDolarLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailDolarLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailDolarLabel);
+        detailDolarLabel.setBounds(335, 122, 260, 30);
 
         detailEuroLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailEuroLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailEuroLabel.setText("detailEuro");
-        detailEuroLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailEuroLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailEuroLabel);
+        detailEuroLabel.setBounds(335, 159, 260, 30);
 
         detailAllChangeTLLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         detailAllChangeTLLabel.setForeground(new java.awt.Color(255, 255, 255));
         detailAllChangeTLLabel.setText("detailAllChangeTL");
-        detailAllChangeTLLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(132, 133, 31), 2, true));
+        detailAllChangeTLLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(102, 0, 102)));
+        detailPanel.add(detailAllChangeTLLabel);
+        detailAllChangeTLLabel.setBounds(335, 196, 260, 30);
 
         detailExitButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        detailExitButton.setForeground(new java.awt.Color(255, 255, 255));
         detailExitButton.setText("GERİ");
-        detailExitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 5));
+        detailExitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(12, 91, 160)));
+        detailExitButton.setContentAreaFilled(false);
+        detailExitButton.setFocusPainted(false);
         detailExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 detailExitButtonActionPerformed(evt);
             }
         });
+        detailPanel.add(detailExitButton);
+        detailExitButton.setBounds(12, 13, 56, 22);
 
-        copyUserInformatin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        copyUserInformatin.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        copyUserInformatin.setForeground(new java.awt.Color(255, 255, 255));
         copyUserInformatin.setText("BİLGİLERİ KOPYALA");
-        copyUserInformatin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(151, 8, 8), 3));
+        copyUserInformatin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 5, new java.awt.Color(12, 91, 160)));
+        copyUserInformatin.setContentAreaFilled(false);
+        copyUserInformatin.setFocusPainted(false);
         copyUserInformatin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 copyUserInformatinActionPerformed(evt);
             }
         });
+        detailPanel.add(copyUserInformatin);
+        copyUserInformatin.setBounds(222, 244, 212, 37);
 
-        javax.swing.GroupLayout detailPanelLayout = new javax.swing.GroupLayout(detailPanel);
-        detailPanel.setLayout(detailPanelLayout);
-        detailPanelLayout.setHorizontalGroup(
-            detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailPanelLayout.createSequentialGroup()
-                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailPanelLayout.createSequentialGroup()
-                        .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(detailPanelLayout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(detailAccountNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                    .addComponent(detailEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailPanelLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(detailIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detailNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detailIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(28, 28, 28)
-                        .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(detailSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(detailEuroLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(detailDolarLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(detailTLLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(detailAllChangeTLLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(detailPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(detailExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(detailPanelLayout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(copyUserInformatin)))
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-        detailPanelLayout.setVerticalGroup(
-            detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(detailExitButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailPanelLayout.createSequentialGroup()
-                        .addComponent(detailNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(detailIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(detailIbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(detailAccountNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(detailEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(detailPanelLayout.createSequentialGroup()
-                        .addComponent(detailSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(detailPanelLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addComponent(detailEuroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(detailPanelLayout.createSequentialGroup()
-                                .addComponent(detailTLLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(detailDolarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(detailAllChangeTLLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(copyUserInformatin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
+        detailB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backG.jpg"))); // NOI18N
+        detailPanel.add(detailB);
+        detailB.setBounds(0, 0, 690, 340);
 
         cards.add(detailPanel, "detailPanel");
 
@@ -1658,7 +1449,7 @@ public class bankWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cards, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cards, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
 
         pack();
@@ -1666,7 +1457,7 @@ public class bankWindow extends javax.swing.JFrame {
 
     private void accountNumberRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountNumberRadioButtonActionPerformed
         if(accountNumberRadioButton.isSelected())
-            loginTextField.setText("HESAP NUMARASI");
+            loginTextField.setText("HESAP N.");
         else
             loginTextField.setText("");
         loginPasswordField.setText("ŞİFRE");
@@ -1675,7 +1466,7 @@ public class bankWindow extends javax.swing.JFrame {
 
     private void idNumberRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idNumberRadioButtonActionPerformed
         if(idNumberRadioButton.isSelected())
-            loginTextField.setText("KİMLİK NUMARASI");
+            loginTextField.setText("KİMLİK N.");
         else
             loginTextField.setText("");
         loginPasswordField.setText("ŞİFRE");
@@ -1683,7 +1474,7 @@ public class bankWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_idNumberRadioButtonActionPerformed
 
     private void loginTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginTextFieldMouseClicked
-        if(loginTextField.getText().equals("HESAP NUMARASI") || loginTextField.getText().equals("KİMLİK NUMARASI"))
+        if(loginTextField.getText().equals("HESAP N.") || loginTextField.getText().equals("KİMLİK N."))
             loginTextField.setText("");
         if((idNumberRadioButton.isSelected() || accountNumberRadioButton.isSelected()) 
                 && String.valueOf(loginPasswordField.getPassword()).equals("")) {
@@ -1701,9 +1492,9 @@ public class bankWindow extends javax.swing.JFrame {
                 loginPasswordField.setEchoChar('•');
         }
         if (idNumberRadioButton.isSelected() && loginTextField.getText().equals(""))
-            loginTextField.setText("KİMLİK NUMARASI");
+            loginTextField.setText("KİMLİK N.");
         else if (accountNumberRadioButton.isSelected() && loginTextField.getText().equals(""))
-            loginTextField.setText("HESAP NUMARASI");
+            loginTextField.setText("HESAP N.");
     }//GEN-LAST:event_loginPasswordFieldMouseClicked
 
     private void loginPasswordVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPasswordVisibleActionPerformed
@@ -1742,6 +1533,9 @@ public class bankWindow extends javax.swing.JFrame {
         registerIbanNumberLabel.setVisible(false);
         registerIbanNumberText.setVisible(false);
         copyButton.setVisible(false);
+        registerPasswordVisible.setSelected(false);
+        registerPasswordText.setEchoChar('•');
+        registerAgainPasswordText.setEchoChar('•');
         registerButton.setText("HESAP OLUŞTUR");
         myCard = "registerCard";
         changeWindowDelay();
@@ -2069,15 +1863,6 @@ public class bankWindow extends javax.swing.JFrame {
         allExit();
     }//GEN-LAST:event_withdrawExitButtonActionPerformed
 
-    private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
-        moneyType = "";
-        myCard = "withdrawCard";
-        wtBalanceLabel.setText("BAKİYE : ");
-        wtAmounthText.setText("");
-        withdrawButonGroup.clearSelection();
-        changeWindowDelay();
-    }//GEN-LAST:event_withdrawButtonActionPerformed
-
     private void wtApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wtApproveButtonActionPerformed
         if(moneyType.equals("")){
             showMessage("PARA BİRİMİ SEÇİNİZ");
@@ -2194,7 +1979,7 @@ public class bankWindow extends javax.swing.JFrame {
                     showMessage("YETERSİZ BAKİYE");
                     return;
                 } else {
-                    userInfo.setTlBalance(userInfo.getTlBalance() - currencyAmounth * moneysInfo.getBuyDolar());
+                    userInfo.setTlBalance(userInfo.getTlBalance() - Double.parseDouble(changeDecimalFormat(currencyAmounth * moneysInfo.getBuyDolar()).replace(",", ".")));
                     userInfo.setDolarBalance(userInfo.getDolarBalance() + currencyAmounth);
                 }
             } else if(sellRadioButton.isSelected()){
@@ -2202,7 +1987,7 @@ public class bankWindow extends javax.swing.JFrame {
                     showMessage("YETERSİZ BAKİYE");
                     return;
                 } else{
-                    userInfo.setTlBalance(userInfo.getTlBalance() + currencyAmounth * moneysInfo.getSellDolar());
+                    userInfo.setTlBalance(userInfo.getTlBalance() + Double.parseDouble(changeDecimalFormat(currencyAmounth * moneysInfo.getSellDolar()).replace(",", ".")));
                     userInfo.setDolarBalance(userInfo.getDolarBalance() - currencyAmounth);
                 }
             }
@@ -2228,7 +2013,7 @@ public class bankWindow extends javax.swing.JFrame {
                     showMessage("YETERSİZ BAKİYE");
                     return;
                 } else {
-                    userInfo.setTlBalance(userInfo.getTlBalance() - currencyAmounth * moneysInfo.getBuyEuro());
+                    userInfo.setTlBalance(userInfo.getTlBalance() - Double.parseDouble(changeDecimalFormat(currencyAmounth * moneysInfo.getBuyEuro()).replace(",", ".")));
                     userInfo.setEuroBalance(userInfo.getEuroBalance() + currencyAmounth);
                 }
             } else if(sellRadioButton.isSelected()){
@@ -2236,7 +2021,7 @@ public class bankWindow extends javax.swing.JFrame {
                     showMessage("YETERSİZ BAKİYE");
                     return;
                 } else{
-                    userInfo.setTlBalance(userInfo.getTlBalance() + currencyAmounth * moneysInfo.getSellEuro());
+                    userInfo.setTlBalance(userInfo.getTlBalance() + Double.parseDouble(changeDecimalFormat(currencyAmounth * moneysInfo.getSellEuro()).replace(",", ".")));
                     userInfo.setEuroBalance(userInfo.getEuroBalance() - currencyAmounth);
                 }
             }
@@ -2357,7 +2142,7 @@ public class bankWindow extends javax.swing.JFrame {
         detailEuroLabel.setText(("Euro : " + changeDecimalFormat(userInfo.getEuroBalance())) + "£");
         detailIbanLabel.setText("İban : " + String.valueOf(userInfo.getIbanNumber()));
         detailIdLabel.setText("Kimlik Numarası : " + String.valueOf(userInfo.getIdNumber()));
-        detailTLLabel.setText("TL : " + String.valueOf(userInfo.getTlBalance()) + "₺");
+        detailTLLabel.setText("TL : " + changeDecimalFormat(userInfo.getTlBalance()) + "₺");
         changeWindowDelay();
     }//GEN-LAST:event_detailButtonActionPerformed
 
@@ -2392,6 +2177,15 @@ public class bankWindow extends javax.swing.JFrame {
         changeWindowDelay();
     }//GEN-LAST:event_refreshButtonActionPerformed
 
+    private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
+        moneyType = "";
+        myCard = "withdrawCard";
+        wtBalanceLabel.setText("BAKİYE : ");
+        wtAmounthText.setText("");
+        withdrawButonGroup.clearSelection();
+        changeWindowDelay();
+    }//GEN-LAST:event_withdrawButtonActionPerformed
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2414,6 +2208,7 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JButton copyUserInformatin;
     private javax.swing.JTextField currencyAmounthText;
     private javax.swing.JButton currencyApproveButton;
+    private javax.swing.JLabel currencyB;
     private javax.swing.ButtonGroup currencyButtonGroup1;
     private javax.swing.ButtonGroup currencyButtonGroup2;
     private javax.swing.JRadioButton currencyDolarRadioButton;
@@ -2436,11 +2231,13 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JTextField depIbanText;
     private javax.swing.JPanel depOpPanel;
     private javax.swing.JRadioButton depTlButton;
+    private javax.swing.JLabel depositeB;
     private javax.swing.JButton depositeButton;
     private javax.swing.JButton depositeExitButton;
     private javax.swing.JPanel depositePanel;
     private javax.swing.JLabel detailAccountNumberLabel;
     private javax.swing.JLabel detailAllChangeTLLabel;
+    private javax.swing.JLabel detailB;
     private javax.swing.JButton detailButton;
     private javax.swing.JLabel detailDolarLabel;
     private javax.swing.JLabel detailEmailLabel;
@@ -2455,7 +2252,6 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JButton ibanCopyButton;
     private javax.swing.JLabel ibanLabel;
     private javax.swing.JRadioButton idNumberRadioButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2467,6 +2263,7 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel loginB;
     private javax.swing.JButton loginButton;
     private javax.swing.ButtonGroup loginPageButtonGroup;
     private javax.swing.JPanel loginPanel;
@@ -2474,6 +2271,7 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JCheckBox loginPasswordVisible;
     private javax.swing.JTextField loginTextField;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JLabel menuB;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JRadioButton myAccount;
     private javax.swing.JLabel nameSurnameLabel;
@@ -2483,6 +2281,7 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JLabel registerAccountNumberLabel;
     private javax.swing.JTextField registerAccountNumberText;
     private javax.swing.JPasswordField registerAgainPasswordText;
+    private javax.swing.JLabel registerB;
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel registerEmailLabel;
     private javax.swing.JTextField registerEmailText;
@@ -2502,8 +2301,11 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JLabel regsiterNameLabel;
     private javax.swing.JLabel sellBuyLabel;
     private javax.swing.JRadioButton sellRadioButton;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel transitionB;
     private javax.swing.JPanel transitionPanel;
     private javax.swing.JPasswordField updateAgainPasswordText;
+    private javax.swing.JLabel updateB;
     private javax.swing.JTextField updateEmailText;
     private javax.swing.JButton updateExitButton;
     private javax.swing.JButton updateExitButton1;
@@ -2513,6 +2315,7 @@ public class bankWindow extends javax.swing.JFrame {
     private javax.swing.JCheckBox updatePasswordVisibleBox;
     private javax.swing.JTextField updateSurnameText;
     private javax.swing.JButton userOperationButton;
+    private javax.swing.JLabel withdrawB;
     private javax.swing.ButtonGroup withdrawButonGroup;
     private javax.swing.JButton withdrawButton;
     private javax.swing.JButton withdrawExitButton;

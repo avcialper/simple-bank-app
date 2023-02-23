@@ -18,6 +18,8 @@ public class UserAction {
         while(booleanIban){
             for(int i = 0; i< 4; i++)
                 ibanConcat += String.valueOf(random.nextInt(10));
+            if(ibanConcat.split("")[0].equals("0"))
+                continue;
             randomIban = Integer.valueOf(ibanConcat);
             booleanIban = databaseOperation.registeredIbanNumberControl(randomIban);
         }
